@@ -9,8 +9,8 @@ $	End of string or line
 \Z	End of string
 \b	Word boundary
 \B	Not word boundary
-\<	Start of word
-\>	End of word
+`\<`	Start of word
+`\>`	End of word
 
 
 ## Character Classes

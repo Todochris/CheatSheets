@@ -37,6 +37,14 @@ Set an email address that will be associated with each history marker
     $ git config --global color.ui auto
 Set automatic command line coloring for Git for easy reviewing
 
+[Tutorial for ssh keys management](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
+
+## SUMMARY to do a quick push
+
+1. git add *
+2. git commit -v "message"
+3. git push
+
 ## INIT * CREATE REPOSITORIES
 
 **A new repository can either be created locally, or an existing repository can be cloned. When a repository was initialized locally, you have to push it to GitHub afterwards.**
@@ -45,7 +53,8 @@ Set automatic command line coloring for Git for easy reviewing
 The git init command turns an existing directory into a new Git repository inside the folder you are running this command. After using the git init command, link the local repository to an empty GitHub repository using the following command:
 
     $ git remote add origin [url]
-Specifies the remote repository for your local repository. The url points to a repository on GitHub.
+    $ git remote set-url origin [url]
+Specifies the remote repository for your local repository. The url points to a repository on GitHub like this `git@github.com:GITHUB_USERNAME/REPO_NAME.git`
 
     $ git clone [url]
 Retrieve or clone (download) a repository that already exists on GitHub, including all of the files, branches, and commits
@@ -65,7 +74,7 @@ Downloads all history from the remote tracking branches
 Combines remote tracking branches into current local branch
 
     $ git push
-Uploads all local branch commits to GitHub
+Uploads all local branch commits to GitHub. Add -f if you want to force the deletion of the remote folder and put instead your local folder
 
     $ git pull
 Updates your current local working branch with all new commits from the corresponding remote branch on GitHub. git pull is a combination of git fetch and git merge
@@ -76,6 +85,9 @@ Updates your current local working branch with all new commits from the correspo
 
     $ git branch [branch-name]
 Creates a new branch
+
+    $ git branch -a
+Show a list of all current branch in local and remote
 
     $ git checkout
 Switch to another branch and check it out into your working directory
@@ -89,21 +101,29 @@ Merges or combines the specified branch’s history into the current branch. Thi
     $ git branch -d [branch-name]
 Deletes the specified branch
 
+    $ git branch -m [branch-name]
+Renames the current branch name
+
+
+
 ## STAGE & SNAPSHOT
 
 **Working with snapshots and the Git staging area git status show modified files in working directory, staged for your next commit**
 
     $ git add [file]
-Add a file as it looks now to your next commit (stage)
+Add a file as it looks now to your next commit (stage), use `*` to say all files and folders content
 
     $ git reset [file]
-Unstage a file while retaining the changes in working directory
+Unstage a file while retaining the changes in working directory. 
 
     $ git diff
 Diff of what is changed but not staged
 
     $ git diff --staged
-Diff of what is staged but not yet committed
+Diff of what is staged but not yet committed, add option --name-only to get only the names of the files
+
+    $ git rm [file]
+Deletes a file
 
     $ git commit -m "[descriptive message]"
 Commit your staged content as a new commit snapshot
