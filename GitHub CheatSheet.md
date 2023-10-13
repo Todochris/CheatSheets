@@ -1,4 +1,6 @@
-# `GitHub Git Cheat Sheet`
+# GitHub Git Cheat Sheet
+
+**todo last update : 20231004**
 
 ![Image](/img/screenshot_github_cheat-sheet.png "Credits: GitHub, Inc. @ www.github.com")
 
@@ -117,8 +119,6 @@ Set to follow the local [branch] for the remote branch main. If you want to foll
 ## STAGE & SNAPSHOT
 
 **Working with snapshots and the Git staging area git status show modified files in working directory, staged for your next commit**
-    $ git status
-Check the status of your repository to see what changes have been made
 
     $ git add [file]
 Add a file as it looks now to your next commit (stage), use `*` to say all files and folders content
@@ -126,11 +126,14 @@ Add a file as it looks now to your next commit (stage), use `*` to say all files
     $ git reset [file]
 Unstage a file while retaining the changes in working directory. 
 
-    $ git diff
-Diff of what is changed but not staged
+    $ git rm [file]
+Delete the file from project and stage the removal for commit
 
-    $ git diff --staged
-Diff of what is staged but not yet committed, add option --name-only to get only the names of the files
+    $ git rm --cached [file]
+Stage the delete of the file for commit without deleting it locally. (Usefull if files where added to .gitignore)
+
+    $ git mv [existing path] [new path]
+Change an existing file path and stage the move
 
     $ git commit -m "[descriptive message]"
 Commit your staged content as a new commit snapshot
@@ -138,32 +141,51 @@ Commit your staged content as a new commit snapshot
     $ git commit --amend
 todo
 
-    $ git tag [version] [commit]
-tags mark forever certain commits like "milestone" (key steps) you can refer to them like branches. If you don't specify [commit], the tag is going to be placed at your HEAD. [version] can be for instance v1 or v1.2.3
+## Tagging a version of the code
 
-## LOG
+    $ git tag
+list the tags of your repo
 
-*Browse and inspect the evolution of project files*
+    $ git tag -a [version] [commit]
+tags mark forever certain commits like "milestone" (key steps) you can refer to them like branches. If you don't specify [commit], the tag is going to be placed at your HEAD. [version] can be for instance v1 or v1.2.3 
+A vim text will open and you will be able to type your description of the tag. First line should be title of the tag, the next lines are details about the version. Type `:wq` to save and exit.
+
+    $ git tag -d [version]
+delete the tag [version]
+
+    $ git push origin --tags
+Transmit local tags to remote repo
+    
+## Logs and inspection of modifications
+
+**Browse and inspect the evolution of project files**
+
+    $ git status
+Check the status of your repository to see what changes have been made
 
     $ git log
 Show all commits in the current branch’s history. Lists version history for the current branch
 
-    $ git log --follow [file]
-Lists version history for a file, beyond renames (works only for a single file)
-
     $ git log --all --decorate --oneline --graph
 Shows a tree of all the commits of the repo. Taken from [Pretty Git branch graphs](https://stackoverflow.com/a/35075021)
 
-## INSPECT & COMPARE
-
-**Examining logs, diffs and object information git log show the commit history for the currently active branch**
+    $ git log --follow [file]
+Lists version history for a file, beyond renames (works only for a single file)
 
     $ git log [first-branch]..[second-branch]
 Show the commits on first-branch that are not on second-branch
 
-    $ git log --follow [file]
-Show the commits that changed file, even across renames
+    $ git log --stat -M
+Show all commit logs with indication of any paths that moved
 
+    $ git diff
+Diff of what is changed but not staged.
+
+    $ git diff [file]
+Diff of what is changed but not staged for the file [file].
+
+    $ git diff --staged
+Diff of what is staged but not yet committed, add option --name-only to get only the names of the files
     $ git diff [first-branch]...[second-branch]
 Shows content differences between two branches
 
@@ -173,21 +195,9 @@ Outputs metadata and content changes of the specified commit
     $ git show [SHA]
 Show any object in Git in human-readable format
 
-## TRACKING PATH CHANGES
-
-**Versioning file removes and path changes**
-
-    $ git rm [file]
-Delete the file from project and stage the removal for commit
-
-    $ git mv [existing path] [new path]
-Change an existing file path and stage the move
-
-    $ git log --stat -M
-Show all commit logs with indication of any paths that moved
-
     $ git describe [branch-commit]
-Shows `<tag>_<numCommits>_g<hash>`, <tag> is the most recent tag, <numCommits> is the number of commits between [branch-commit] and the most recent tag, <hash> is the identifier of [branch-commit]. 
+Shows `<tag>_<numCommits>_g<hash>`, <tag> is the most recent tag, <numCommits> is the number of commits between [branch-commit] and the most recent tag, <hash> is the identifier of [branch-commit].
+ 
 
 ## IGNORING PATTERNS
 
@@ -226,8 +236,11 @@ Apply any commits of current branch [branch-source] ahead of specified one [bran
     $ git merge [alias]/[branch]
 Merge a remote branch into your current branch to bring it up to date
 
+    $ git push
+todo
+
     $ git push [alias] [branch]
-Transmit local branch [branch] commits to the remote repository [alias] branch [branch]. [alias] and [branch] are not mandatory, by not specifying them, it downloads all the commits from the remote repo.
+Transmit local branch [branch] commits to the remote repository [alias] branch [branch]. [alias] and [branch] are not mandatory, by not specifying them, it uploads all the commits from the current branch.
     * [alias] in most cases it's `origin`
     * [branch] can be replaced by [source-local-branch-commit]:[destination-remote-branch-commit]. If you don't specify a source, you are deleting the [destination-remote-branch-commit]
 
