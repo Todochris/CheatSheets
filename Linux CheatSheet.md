@@ -2,7 +2,7 @@
 
 **Written by Christian Toderascu, created on 20221201**
 
-**todo last update : 20230828**
+**todo last update : 20231009**
 
 last update available on [GitHub - Linux CheatSheet.md](https://github.com/Todochris/CheatSheets/blob/main/Linux%20CheatSheet.md)
 
@@ -12,6 +12,7 @@ last update available on [GitHub - Linux CheatSheet.md](https://github.com/Todoc
 | :------------ | :------------ |
 | ls            | directory listing
 | ls -al        | formatted listing with hidden files
+| ls -alt       | directory listing in chronological order
 | ls -R         | recursivly read all the contents of a directory
 | cd dir        | change directory to dir
 | cd            | change to home
@@ -35,6 +36,7 @@ last update available on [GitHub - Linux CheatSheet.md](https://github.com/Todoc
 | tail file     | output the last 10 lines of file
 | tail -f file  | output the contents of file as it grows, starting with the last 10 lines
 | tree          | writes all the folder with its files in a tree structure starting from the current directory in the terminal
+| echo          | look for files using pattern
 
 ### commands usefull with servers
 
@@ -115,7 +117,8 @@ last update available on [GitHub - Linux CheatSheet.md](https://github.com/Todoc
 | grep pattern files | search for pattern in files 
 | grep -r pattern dir | search recursively for pattern in dir
 | command       | grep pattern | search for pattern in the output of command
-| locate file   | fnd all instances of file
+| locate file   | find all instances of file
+| compgen -c    | list all commands available in the terminal
 
 ## System Info
 
