@@ -4,7 +4,7 @@ Modified by Christian Toderascu.
 
 **last update: 20231017**
 
-last update available on [GitHub - Python libs CheatSheet.md](https://github.com/Todochris/CheatSheets/blob/main/Python%20libs%20CheatSheet.md)
+last update available on [GitHub - Python libs CheatSheet.md](https://github.com/Todochris/CheatSheets/blob/main/Python%20libs%20CheatSheet.md)  
 
 
 ## NumPy

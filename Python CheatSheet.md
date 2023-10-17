@@ -4,7 +4,7 @@ Modified by Christian Toderascu.
 
 **last update: 20231017**
 
-last update available on [GitHub - Python CheatSheet.md](https://github.com/Todochris/CheatSheets/blob/main/Python%20CheatSheet.md)
+last update available on [GitHub - Python CheatSheet.md](https://github.com/Todochris/CheatSheets/blob/main/Python%20CheatSheet.md)  
 [link of the source](https://github.com/aneagoie/ztm-python-cheat-sheet)
 
 

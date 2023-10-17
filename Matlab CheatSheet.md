@@ -4,7 +4,7 @@ Modified by Christian Toderascu.
 
 **last update: 20231017**
 
-last update available on [GitHub - Matlab CheatSheet.md](https://github.com/Todochris/CheatSheets/blob/main/Matlab%20CheatSheet.md)
+last update available on [GitHub - Matlab CheatSheet.md](https://github.com/Todochris/CheatSheets/blob/main/Matlab%20CheatSheet.md)  
 [MATLAB Documentation](mathworks.com/help/matlab/)
 
 

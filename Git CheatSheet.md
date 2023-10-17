@@ -4,7 +4,7 @@ Modified by Christian Toderascu.
 
 **last update: 20231017**
 
-last update available on [GitHub - Git CheatSheet.md](https://github.com/Todochris/CheatSheets/blob/main/Git%20CheatSheet.md)
+last update available on [GitHub - Git CheatSheet.md](https://github.com/Todochris/CheatSheets/blob/main/Git%20CheatSheet.md)  
 [link of the source](https://github.com/bytecurl/github-cheatsheet-markdown/tree/main)
 
 

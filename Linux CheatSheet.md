@@ -2,9 +2,9 @@
 Cheat Sheet for Linux/Bash terminal, created by someone_todo.
 Modified by Christian Toderascu.
 
-**last update : 20231017**
+**last update: 20231017**
 
-last update available on [GitHub - Linux CheatSheet.md](https://github.com/Todochris/CheatSheets/blob/main/Linux%20CheatSheet.md)
+last update available on [GitHub - Linux CheatSheet.md](https://github.com/Todochris/CheatSheets/blob/main/Linux%20CheatSheet.md)  
 [link of the source](todo)
 
 
