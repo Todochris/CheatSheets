@@ -1,28 +1,19 @@
-# GitHub Git Cheat Sheet
+# Git Cheat Sheet
+Cheat Sheet for Git commands version control, created by [bytecurl](https://github.com/bytecurl)
+Modified by Christian Toderascu.
 
-**todo last update : 20231004**
+**last update: 20231017**
+
+last update available on [GitHub - Git CheatSheet.md](https://github.com/Todochris/CheatSheets/blob/main/Git%20CheatSheet.md)
+[link of the source](https://github.com/bytecurl/github-cheatsheet-markdown/tree/main)
+
 
 ![Image](/img/screenshot_github_cheat-sheet.png "Credits: GitHub, Inc. @ www.github.com")
 
 Git is the free and open source distributed version control system that’s responsible for everything GitHub related that happens locally on your computer. This cheat sheet features the most important and commonly used Git commands for easy reference.
 
-taken from [this GitHub repo](https://github.com/bytecurl/github-cheatsheet-markdown/tree/main)
 
-## `INSTALLATION` & `GUIS`
-
-**With platform specific installers for Git, GitHub also provides the ease of staying up-to-date with the latest releases of the command line tool while providing a graphical user interface for day-to-day interaction, review, and repository synchronization.**
-
-`GitHub for Windows`
-
-[https://windows.github.com](https://windows.github.com)
-
-`GitHub for Mac`
-
-[https://mac.github.com](https://mac.github.com)
-
-> **For Linux and Solaris platforms, the latest release is available on the official Git web site.**
-
-`Git for All Platforms`
+## INSTALLATION & GUIS
 
 [http://git-scm.com](http://git-scm.com)
 
@@ -43,7 +34,6 @@ Set an email address that will be associated with each history marker
     $ git config --global color.ui auto
 Set automatic command line coloring for Git for easy reviewing
 
-**
 [Tutorial for ssh keys management](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
 
 ## SUMMARY to do a quick push

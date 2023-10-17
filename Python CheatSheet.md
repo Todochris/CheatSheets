@@ -1,7 +1,11 @@
-Python ZTM Cheatsheet 💻🚀
-===============================
+# Python CheatSheet
+Cheat Sheet for Python programming language, created by ZTM.
+Modified by Christian Toderascu.
 
-This file was taken from [ZTM GitHb](https://github.com/aneagoie/ztm-python-cheat-sheet.git)
+**last update: 20231017**
+
+last update available on [GitHub - Python CheatSheet.md](https://github.com/Todochris/CheatSheets/blob/main/Python%20CheatSheet.md)
+[link of the source](https://github.com/aneagoie/ztm-python-cheat-sheet)
 
 
 We created this Python 3 Cheat Sheet initially for students of [Complete Python Developer in 2022: Zero to Mastery](https://academy.zerotomastery.io/p/complete-python-developer-zero-to-mastery) but we're now sharing it with any Python beginners to help them learn and remember common Python syntax and with intermediate and advanced Python developers as a handy reference. If you'd like to download a PDF version of this Python Cheat Sheet, you can get it [here](https://zerotomastery.io/courses/python/cheatsheet/?utm_source=github&utm_medium=ztm-python-cheat-sheet)!

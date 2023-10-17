@@ -1,10 +1,12 @@
-# Terminal references
+# Linux CheatSheet
+Cheat Sheet for Linux/Bash terminal, created by someone_todo.
+Modified by Christian Toderascu.
 
-**Written by Christian Toderascu, created on 20221201**
-
-**todo last update : 20231009**
+**last update : 20231017**
 
 last update available on [GitHub - Linux CheatSheet.md](https://github.com/Todochris/CheatSheets/blob/main/Linux%20CheatSheet.md)
+[link of the source](todo)
+
 
 ## File commands
 
@@ -96,7 +98,7 @@ last update available on [GitHub - Linux CheatSheet.md](https://github.com/Todoc
 | `| tee f.log` | to put at the end of a command to record the outputs (stdout)
 | `|& tee f.log`| to put at the end of a command to record the stdout et stderr
 
-### Lauch background job
+### Launch background job
 
 * `at now <<!`      to launch a job
 * `atq`             to see the pending jobs
@@ -180,7 +182,7 @@ matlab -nodisplay -r "matlab_commands" -logfile matlab_code.log
 
 ### [tmux](https://github.com/tmux/tmux/wiki)
 ---------------------------------------------
-cheat sheet inspired from this [website](https://tmuxcheatsheet.com)
+CheatSheet from this [website](https://tmuxcheatsheet.com), modified by Christian Toderascu.
 
 **Terminal multiplexer**
 

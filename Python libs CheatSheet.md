@@ -1,8 +1,13 @@
 # Python Libraries CheatSheet
+Cheat Sheet for Python libraries, taken from multiple sources.
+Modified by Christian Toderascu.
+
+**last update: 20231017**
+
+last update available on [GitHub - Python libs CheatSheet.md](https://github.com/Todochris/CheatSheets/blob/main/Python%20libs%20CheatSheet.md)
 
 
 ## NumPy
-
 
 [NumPy](http://www.numpy.org) is the fundamental package for scientific computing with Python. Here are the [official docs](https://docs.scipy.org/doc/numpy/).
 

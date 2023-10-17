@@ -1,11 +1,11 @@
-# MacDown
+# MarkDown CheatSheet
+Cheat Sheet for MarkDown document typesetting language, created by [MacDown software](https://macdown.uranusjr.com).
+Modified by Christian Toderascu.
 
-![MacDown logo](http://macdown.uranusjr.com/static/images/logo-160.png)
+**last update: 20231017**
 
-Hello there! I’m **MacDown**, the open source Markdown editor for OS X.
-
-Let me introduce myself.
-
+last update available on [GitHub - MarkDown CheatSheet.md](https://github.com/Todochris/CheatSheets/blob/main/MarkDown%20CheatSheet.md)
+[link of the source](https://macdown.uranusjr.com)
 
 
 ## Markdown and I
@@ -45,6 +45,12 @@ won't break
 * This two-line bullet  
 will break
 ```
+
+### Comments
+[comment]: <> (here we can have a comment)
+<!--- here we have a comment that is fully highlighted in blue --->
+
+
 
 ### Strong and Emphasize
 
@@ -165,10 +171,10 @@ there are no empty lines between paragraphs.
   
 ### Inline Code
 `Inline code` is indicated by surrounding it with backticks:  
-`` `Inline code` ``
+``` `Inline code` ```
 
 If your ``code has `backticks` `` that need to be displayed, you can use double backticks:  
-```` ``Code with `backticks` `` ````  (mind the spaces preceding the final set of backticks)
+``` ``Code with `backticks` `` ``` (mind the spaces preceding the final set of backticks)
 
 
 ### Block Code

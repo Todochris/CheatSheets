@@ -1,8 +1,8 @@
 # Matlab CheatSheet
+Cheat Sheet for MATLAB Tools Course at ETH Zürich, created by Res Jöhr.
+Modified by Christian Toderascu.
 
-**Written by Christian Toderascu, created on 20230824**
-
-**todo last update : 20231013**
+**last update: 20231017**
 
 last update available on [GitHub - Matlab CheatSheet.md](https://github.com/Todochris/CheatSheets/blob/main/Matlab%20CheatSheet.md)
 [MATLAB Documentation](mathworks.com/help/matlab/)
