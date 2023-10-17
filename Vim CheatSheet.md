@@ -6,7 +6,7 @@ Modified by Christian Toderascu.
 
 last update available on [GitHub - Vim CheatSheet.md](https://github.com/Todochris/CheatSheets/blob/main/Vim%20CheatSheet.md)  
 [rtorr web browser CheatSheet](https://github.com/rtorr/vim-cheat-sheet)  
-[ranjith-b MarkDown CheatSheet extracted from the one of rtoor](https://github.com/ranjith-b/vim_cheat_sheet/blob/master/vim_cheat_sheet.md)  
+[ranjith-b MarkDown CheatSheet extracted from the one of rtorr](https://github.com/ranjith-b/vim_cheat_sheet/blob/master/vim_cheat_sheet.md)  
 
 
 ## Global
