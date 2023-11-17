@@ -328,6 +328,14 @@ end
 
 
 ## Special Topics
+-----------------
+
+
+### Add-ons
+matlab.addons.installedAddons | show installed add-ons
+matlab.addons.install('filename') | install add-on from file
+matlab.addons.enableAddon(name) | enable add-on
+matlab.addons.disableAddon(name) | matlab.addons.disableAddon(name)
 
 ### Polynomials
 | command           | description       |

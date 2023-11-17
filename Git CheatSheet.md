@@ -119,8 +119,8 @@ Unstage a file while retaining the changes in working directory.
     $ git rm [file]
 Delete the file from project and stage the removal for commit
 
-    $ git rm --cached [file]
-Stage the delete of the file for commit without deleting it locally. (Usefull if files where added to .gitignore)
+    $ git rm --cached --ignore-unmatch [file]
+Stage the delete of the file for commit without deleting it locally `--cached`, usefull if files where added to .gitignore. `--ignore-unmatch` is to avoid the error message if the file is not in the directory
 
     $ git mv [existing path] [new path]
 Change an existing file path and stage the move

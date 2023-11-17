@@ -162,7 +162,7 @@ Tip Register 0 contains always the value of the last yank command.
 ## Exiting
 | command           | description       |
 | :---------------- | :---------------- |
-| :w                | write (save) the file, but don't exit
+| :w                | write (save as) the file, but don't exit
 | :w !sudo tee %    | write out the current file using sudo
 | :wq or :x or ZZ   | write (save) and quit
 | :q                | quit (fails if there are unsaved changes)

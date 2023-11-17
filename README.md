@@ -21,4 +21,7 @@ last update available on [GitHub - CheatSheets](https://github.com/Todochris/Che
 ├── Regex CheatSheet.md  
 └── Vim CheatSheet.md  
 
+## Tasks
 
+* [todo] add links to files
+* [todo] include commands from `Matlab Commands.pdf` into `Matlab Cheatsheed.md``
