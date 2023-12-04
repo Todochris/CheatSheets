@@ -116,6 +116,7 @@ Tip: Prefix a cursor movement command with a number to repeat it. For example, 4
 | y                 | yank (copy) marked text
 | d                 | delete marked text
 | ~                 | switch case
+| g Ctrl+g          | Lines, words, characters and Bites selected
 
 ## Registers
 | command           | description       |

@@ -13,7 +13,7 @@ last update available on [GitHub - Linux CheatSheet.md](https://github.com/Todoc
 | command       | description   |
 | :------------ | :------------ |
 | ls            | listing directory contents
-| ls -al        | listing directory contents -l for long-listing -a for hidden files
+| ls -al        | listing directory contents -l for long-listing -a for hidden files check [this section](## Details for commands) for more
 | cd dir        | change directory to dir
 | cd            | change directory to home
 | cd -P Link    | change directory to Link (a symbolic link) through the real path
@@ -143,7 +143,7 @@ searching uses regex (Regular expression) to find patterns in the files
 | grep -r [regex] dir | search recursively for regex in dir
 | `command | grep [regex]` | search in the output of command using regex
 | find ~ -name [name] | search for all instances of file under the ~ directory
-| locate [file]   | find all instances of file using the Linux Database (more of a system admin utility, needs to be updated with `sudo updatedb` before using it)
+| locate [file]   | find all instances of file using the Linux Database (more of a system admin utility, needs to be updated with `sudo updatedb` before using it)
 | compgen -c    | list all commands available in the terminal
 
 ## System Info
@@ -389,7 +389,7 @@ done
 ```
 
 
-##Details for commands
+## Details for commands
 ----------------------
 
 ### `ls -<option> <path>`
@@ -403,3 +403,4 @@ List the content of the path with the option. The path is optional and it can be
 | S             | size of files order of listing
 | h             | human readable file sizes (MB, GB, etc.)
 | R             | recursivly read all the contents of a directory (using tree is better)
+| -1            | list line by line

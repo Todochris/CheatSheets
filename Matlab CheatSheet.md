@@ -23,13 +23,14 @@ last update available on [GitHub - Matlab CheatSheet.md](https://github.com/Todo
 | clf               | Clear all plots
 | close all         | Close all plots
 | ctrl-c            | Kill the current calculation
-| doc fun           | open documentation
+| doc fun           | open documentation about 'fun'
 | disp(’text’)      | Print text
 | sprintf("text%g",num) | Format text by replacing "%g" by the number from num
 | sprintf("text%s",str) | Format text by replacing "%s" by the string from str
 | format shortG     | Set output display format todo change from MTFEM
 | help fun          | open in-line help
-| load filename {vars} | load variables from .mat file
+| load(filename,[vars]) | load variables from .mat file
+| whos(matfile(filename))
 | save {-append} file {vars} | save var to file
 | addpath path      | include path to ..
 | iskeyword arg     | Check if arg is keyword
@@ -417,3 +418,10 @@ further functions: movmax, movmin, cummax, cummin, movprod, movsum, cumsum, cump
 | fix(X)            | Round toward zero
 | floor(X)          | Round toward negative infinity
 | round(X)          | Round to nearest decimal or integer
+
+
+### Strings
+| command           | description       |
+| :---------------- | :---------------- |
+| split(str,[delimiters]) | splits str on spaces and commas
+

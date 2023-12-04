@@ -171,10 +171,8 @@ there are no empty lines between paragraphs.
   
 ### Inline Code
 `Inline code` is indicated by surrounding it with backticks:  
-``` `Inline code` ```
 
-If your ``code has `backticks` `` that need to be displayed, you can use double backticks:  
-``` ``Code with `backticks` `` ``` (mind the spaces preceding the final set of backticks)
+If your ``code has `backticks` `` that need to be displayed, you can use double backticks, mind the spaces preceding the final set of backticks
 
 
 ### Block Code
@@ -240,8 +238,6 @@ print('Hello world!')
 You can add an optional language ID at the end of the first line. The language ID will only be used to highlight the code inside if you tick the ***Enable highlighting in code blocks*** option. This is what happens if you enable it:
 
 ![Syntax highlighting example](http://d.pr/i/9HM6+)
-
-I support many popular languages as well as some generic syntax descriptions that can be used if your language of choice is not supported. See [relevant sections on the official site](http://macdown.uranusjr.com/features/) for a full list of supported syntaxes.
 
 
 ### Inline Formatting
