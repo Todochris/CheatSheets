@@ -34,6 +34,9 @@ Set an email address that will be associated with each history marker
     $ git config --global color.ui auto
 Set automatic command line coloring for Git for easy reviewing
 
+    $ git config --global init.defaultBranch main
+Set the default branch name for new repositories to main
+
 [Tutorial for ssh keys management](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
 
 ## SUMMARY to do a quick push
@@ -42,6 +45,16 @@ Set automatic command line coloring for Git for easy reviewing
 2. git add *
 3. git commit -m "message"
 4. git push
+
+## SUMMARY to create a new repo
+
+1. git init
+2. git add *
+3. git commit -m "first commit"
+4. git branch -M main
+4. git remote add origin git@github.com:GITHUB_USERNAME/REPO_NAME.git
+5. git push --set-upstream origin main
+
 
 ## INIT * CREATE REPOSITORIES
 
@@ -131,7 +144,7 @@ Commit your staged content as a new commit snapshot
     $ git commit --amend
 todo
 
-## Tagging a version of the code
+## TAGGING A VERSION OF THE CODE
 
     $ git tag
 list the tags of your repo
@@ -145,8 +158,20 @@ delete the tag [version]
 
     $ git push origin --tags
 Transmit local tags to remote repo
-    
-## Logs and inspection of modifications
+
+
+### To change the tag from a commit to the checked-out commit
+
+    $ git push origin :refs/tags/<tagname>
+Delete the tag on any remote before you push
+
+    $ git tag -fa <tagname>
+Replace the tag to reference the most recent commit
+
+    $ git push origin --tags
+Push the tag to the remote origin
+
+## LOGS AND INSPECTION OF MODIFICATIONS
 
 **Browse and inspect the evolution of project files**
 

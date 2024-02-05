@@ -8,4 +8,8 @@ last update available on [GitHub - todo CheatSheet.md](https://github.com/Todoch
 [link of the source](todo)
 
 
+## Commands
+
+| command       | description   |
+| :------------ | :------------ |
 

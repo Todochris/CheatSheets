@@ -25,12 +25,14 @@ last update available on [GitHub - Matlab CheatSheet.md](https://github.com/Todo
 | ctrl-c            | Kill the current calculation
 | doc fun           | open documentation about 'fun'
 | disp(’text’)      | Print text
+| celldisp(C)       | Display full cell array
 | sprintf("text%g",num) | Format text by replacing "%g" by the number from num
 | sprintf("text%s",str) | Format text by replacing "%s" by the string from str
 | format shortG     | Set output display format todo change from MTFEM
 | help fun          | open in-line help
 | load(filename,[vars]) | load variables from .mat file
-| whos(matfile(filename))
+| whos var1 var2    | list info about var1 and var2 variables in the workspace, to check all the variables don't specify any var
+| whos(matfile(filename)) | list variables in .mat file
 | save {-append} file {vars} | save var to file
 | addpath path      | include path to ..
 | iskeyword arg     | Check if arg is keyword
@@ -218,8 +220,9 @@ Only sin functions are given in example but there are analogous elementwise trig
 ## Programming methods
 
 ### Functions
-% defined in m-file
-% File must have the same name as the function 
+* Defined in m-file (filename.m) and it needs to be in the path of matlab in order to be executed.
+* File must have the same name as the function 
+* To check all function (fList) and program (pList) dependencies of a function use the command `[fList,pList] = matlab.codetools.requiredFilesAndProducts('function.m')`
 ```matlab
 function output = addNumbers(x, y)
     % function summing up two numbers
@@ -242,7 +245,7 @@ f = @(x) cos(x.ˆ2)./(3*x);
 | command           | description       |
 | :---------------- | :---------------- |
 | ==                | Check equality
-| ∼=                | Check inequality
+| ~=                | Check inequality
 | >                 | greater than
 | >=                | greater or equal to
 | <                 | less than
@@ -285,6 +288,9 @@ end % control structures terminate with end
 for i = 1:3
     disp('cool'); % comment with some $\latex in it \pi x^2$
 end % control structures terminate with end
+
+% out : cool\ncool\ncool\n
+
 ```
 
 ### While-Loop
@@ -301,6 +307,7 @@ end % control structures terminate with end
 ### Scalable function in matlab
 
 ```matlab
+add_var = struct;
 add_var.param1 = 5 ; 
 
 disp(fun(1,[])); % this will use the default parameters
@@ -310,7 +317,7 @@ function output = fun(var1, add_var)
     % scalable function in matlab
     % Args:
         % var1 (int, float) : a mandatory variable for your function
-        % add_var (structured variable) : 
+        % add_var (struct) : 
             % = [] for default values in the function
             % add_var.param1 (int, float) : param1 value instead of default
     % Returns:
@@ -413,7 +420,7 @@ further functions: movmax, movmin, cummax, cummin, movprod, movsum, cumsum, cump
 | factorial(n)      | Factorial of input
 | gcd(n,m)          | Greatest common divisor
 | lcm(n,m)          | least common multiple
-| mod(a,m)          | Remainder after division (modulo operation)
+| mod(a,m)          | Remainder after division of a by m (modulo operation)
 | ceil(X)           | Round toward positive infinity
 | fix(X)            | Round toward zero
 | floor(X)          | Round toward negative infinity

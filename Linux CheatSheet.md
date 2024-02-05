@@ -54,8 +54,7 @@ last update available on [GitHub - Linux CheatSheet.md](https://github.com/Todoc
 * `diff -rq origin/folder dest/folder` | checks the difference in content between 2 folders
     * r : option to check folder recursivly
     * q : brief mode, not checking line by line the differences
-* `rsync -avu --delete --exclude="/.*" /origin/folder/ /dest/folder` | sync the content of a folder with a folder by only adding the new elements
-    * `-avu` : archive (full directory) , verbose, update (skip files that are newer on the receiver)
+* `rsync -avu --delete --exclude="/.*" /origin/folder/ /dest/folder` | sync the content of a folder with a folder by only adding the new elements. More details in [this section](##Details-for-commands)
     * `--delete` : deleting from destination what is not present in the source, /!\ dangerous /!\
     * `--exclude="/.*"` : excluding hidden files
     * `--dry-run` : only show what are the files that are planned to be sent without sending them
@@ -142,7 +141,7 @@ searching uses regex (Regular expression) to find patterns in the files
 | grep [regex] files | search for regex in files 
 | grep -r [regex] dir | search recursively for regex in dir
 | `command | grep [regex]` | search in the output of command using regex
-| find ~ -name [name] | search for all instances of file under the ~ directory
+| find ~ -name 'name' | search for all instances of name under the ~ directory (put the name of the file or globbing pattern between simple quotes)
 | locate [file]   | find all instances of file using the Linux Database (more of a system admin utility, needs to be updated with `sudo updatedb` before using it)
 | compgen -c    | list all commands available in the terminal
 
@@ -243,103 +242,9 @@ Substitution characters interpreted by the shell to generate file names. It is n
 vim file | opens file in vim terminal
 xdg-open . | opens the default Linux file manager
 matlab -nodisplay -r "matlab_commands" -logfile matlab_code.log
+tmux new -s mysession | Start a new session with the name mysession
+tmux a -t mysession | Attach to a session with the name mysession
 
-### [tmux](https://github.com/tmux/tmux/wiki)
----------------------------------------------
-CheatSheet from this [website](https://tmuxcheatsheet.com), modified by Christian Toderascu.
-
-**Terminal multiplexer**
-
-#### Sessions management from terminal
-| command       | description   |
-| :------------ | :------------ |
-| tmux new | Start a new session from terminal
-| tmux new -s mysession | Start a new session with the name mysession
-| tmux kill-session -t mysession | kill/delete session mysession
-| tmux kill-session -a | kill/delete all sessions but the current
-| tmux kill-session -a -t mysession | kill/delete all sessions but mysession
-| tmux ls | Show all sessions
-| tmux a | Attach to last session
-| tmux a -t mysession | Attach to a session with the name mysession
-
-#### Session management inside tmux
-| command       | description   |
-| :------------ | :------------ |
-| :             | to input a command, use `:` instead of `tmux` if you are already connected to a tmux session
-| Ctrl+b $      | Rename session
-| Ctrl+b d      | Detach from session
-| :attach -d    | Detach others on the session (Maximize window by detach other clients)
-| Ctrl+b s      | Show all sessions
-| Ctrl+b w      | Session and Window Preview
-| Ctrl+b (      | Move to previous session
-| Ctrl+b )      | Move to next session
-| Ctrl+b [      | Enter scroll mode, quit with `q`
-
-
-#### Windows management
-| command       | description   |
-| :------------ | :------------ |
-| tmux new -s mysession -n mywindow | start a new session with the name mysession and window mywindow
-| Ctrl+b c      | Create window
-| Ctrl+b ,      | Rename current window
-| Ctrl+b &      | Close current window
-| Ctrl+b w      | List windows
-| Ctrl+b p      | Previous window
-| Ctrl+b n      | Next window
-| Ctrl+b 0 ... 9| Switch/select window by number
-| Ctrl+b l      | Toggle last active window
-| :swap-window -s 2 -t 1 | Reorder window, swap window number 2(src) and 1(dst)
-| :swap-window -t -1 | Move current window to the left by one position
-
-#### Panes management from terminal
-| command       | description   |
-| :------------ | :------------ |
-| Ctrl+b ;      | Toggle last active pane
-| Ctrl+b %      | Split pane with horizontal layout |
-| Ctrl+b "      | Split pane with vertical layout  –––
-| Ctrl+b {      | Move the current pane left
-| Ctrl+b }      | Move the current pane right
-|===============|===============
-| Ctrl+b ↑      | Switch to pane to the direction
-| Ctrl+b ↓      | Switch to pane to the direction
-| Ctrl+b →      | Switch to pane to the direction
-| Ctrl+b ←      | Switch to pane to the direction
-|===============|===============
-| :setw synchronize-panes | Toggle synchronize-panes(send command to all panes)
-|===============|===============
-| Ctrl+b Spacebar | Toggle between pane layouts
-| Ctrl+b o      | Switch to next pane
-| Ctrl+b q      | Show pane numbers
-| Ctrl+b q 0 ... 9 | Switch/select pane by number
-| Ctrl+b z      | Toggle pane zoom
-| Ctrl+b !      | Convert pane into a window
-|===============|===============
-| Ctrl+b+↑      | Resize current pane height(holding second key is optional)
-| Ctrl+b+↓      | Resize current pane height(holding second key is optional)
-| Ctrl+b+→      | Resize current pane width(holding second key is optional)
-| Ctrl+b+←      | Resize current pane width(holding second key is optional)
-|===============|===============
-| Ctrl+b x      | Close current pane
-
-#### configuration file
-in ~/.tmux.conf
-```
-# Enable mouse mode (tmux 2.1 and above)
-set -g mouse on
-
-# Sets the scroll-back history limit
-set-option -g history-limit 10000
-```
-
-### [top](https://ss64.com/osx/top.html)
-Those option can be specified either in the command line before executing `top` with the addition of a `-` at the start of each option [in MacOs](https://ss64.com/osx/top.html), or they can be typed during execution in [Linux](https://www.man7.org/linux/man-pages/man1/top.1.html) and MacOs
-* `o` order the process display to sort by the input key
-    * pid
-    * cpu
-    * mem (physical memory footprint)
-    * vsize (total memory size)
-* `s` order the process display to hae a certain delay in seconds between each update
-* `U` only show the processes owned by the user
 
 
 ## Directory structure in linux
@@ -399,8 +304,48 @@ List the content of the path with the option. The path is optional and it can be
 | :------------ | :------------ |
 | l             | long format including permissions, owner, size, last modification, and the filename
 | a             | all content
+| R             | recursivly read all the contents of a directory (using tree is better)
 | t             | time directory listing contents in chronological order of last modification
 | S             | size of files order of listing
 | h             | human readable file sizes (MB, GB, etc.)
 | R             | recursivly read all the contents of a directory (using tree is better)
-| -1            | list line by line
+| 1            | list line by line
+
+
+### `rsync -<option> <source_path> <destination_path>
+
+| option        | description   |
+| :------------ | :------------ |
+| v             | verbose
+| a             | archive mode (looking into directories, taking symlinks, permissions,...)
+| u             | update (skip files that are newer on the receiver)
+| h             | human-readable format for file sizes for instance
+| i             | Requests a simple itemized list of the changes that are being made
+              to each file, including attribute changes
+
+**i option output string `YXcstpogz`**
+
+* Y is replaced by the updated type
+    * `<` means that a file is being transferred to the remote host (sent).
+    * `>` means that a file is being transferred to the local host (received).
+    * `c` means that a local change/creation is occurring for the item (such as the creation of a directory or the changing of a symlink, etc.).
+    * `h` means that the item is a hard link to another item (requires --hard-links).
+    * `.` means that the item is not being updated (though it might have attributes that are being modified).
+* X stands for the file type
+    * `f` for a file
+    * `d` for a directory
+    * `L` for a symlink
+    * `D` for a device
+    * `S` for a special file (e.g. named sockets and fifos).
+* cstpogz stand for the reason of the update, 
+    - if some reasons for update are not met, the letter are replaced by a `.`
+    - if a newly created item, the letters are replaced with a "+", 
+    - if an identical item exists, the letters are replaced with spaces\n
+    * `c` means the checksum of the file is different and will be updated by the __file transfer__ (requires --checksum).
+    * `s` means the size of the file is different and will be updated by the __file transfer__.
+    * `t` means the modification time is different and is being updated to the sender's value (requires --times).  An alternate value of T means that the time will be set to the transfer time, which happens anytime a symlink is transferred, or when a file or device is transferred without --times.
+    * `p` means the permissions are different and are being updated to the sender's value (requires --perms).
+    * `o` means the owner is different and is being updated to the sender's value (requires --owner and super-user privileges).
+    * `g` means the group is different and is being updated to the sender's value (requires --group and the authority to set the group).
+    * `z` slot is reserved for future use.
+
