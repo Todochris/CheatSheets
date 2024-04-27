@@ -7,25 +7,27 @@ Modified by Christian Toderascu.
 last update available on [GitHub - MarkDown CheatSheet.md](https://github.com/Todochris/CheatSheets/blob/main/MarkDown%20CheatSheet.md)  
 [link of the source](https://macdown.uranusjr.com)
 
-
-## Markdown and I
-
-**Markdown** is a plain text formatting syntax created by John Gruber, aiming to provide a easy-to-read and feasible markup. The original Markdown syntax specification can be found [here](http://daringfireball.net/projects/markdown/syntax).
-
-**MacDown** is created as a simple-to-use editor for Markdown documents. I render your Markdown contents real-time into HTML, and display them in a preview panel.
-
-![MacDown Screenshot](http://d.pr/i/10UGP+)
-
-I support all the original Markdown syntaxes. But I can do so much more! Various popular but non-standard syntaxes can be turned on/off from the [**Markdown** preference pane](#markdown-pane).
-
-You can specify extra HTML rendering options through the [**Rendering** preference pane](#rendering-pane).
-
-You can customize the editor window to you liking in the [**Editor** preferences pane](#editor-pane):
-
-You can configure various application (that's me!) behaviors in the [**General** preference pane](#general-pane).
-
 ## The Basics
-Before I tell you about all the extra syntaxes and capabilities I have, I'll introduce you to the basics of standard markdown. If you already know markdown, and want to jump straight to learning about the fancier things I can do, I suggest you skip to the [**Markdown** preference pane](#markdown-pane). Lets jump right in.  
+
+### Metadata (for Pandoc)
+
+At the start of the `*.md` file you can add metadata in the form of a YAML block. This is a block of key-value pairs, where the key is the name of the metadata field and the value is the value of the field. The metadata block is surrounded by `---` at the start and end of the block. Here is an example of a metadata block that you can use for generating a pdf document with Pandoc:
+```
+---
+papersize: a5
+margin-left: 3
+margin-right: 3
+margin-top: 1cm
+margin-bottom: 1cm
+colorlinks: true
+linkcolor: blue
+---
+```
+
+to generate a document using pandoc, you can either use the default Latex (if mactex is installed) or html (wkhtmltopdf). Here is an example of a command to generate a pdf document using pandoc:
+```
+pandoc -t html file.md -o file.pdf
+```
 
 ### Line Breaks
 To force a line break, put two spaces and a newline (return) at the end of the line.
@@ -48,7 +50,7 @@ will break
 
 ### Comments
 [comment]: <> (here we can have a comment)
-<!--- here we have a comment that is fully highlighted in blue --->
+<!--- here we have a comment that is fully highlighted --->
 
 
 
@@ -150,23 +152,6 @@ there are no empty lines between paragraphs.
 > * Lists
 > * [Links][arbitrary_id]
 > * Etc.
-
-Here is the code:
-
-```
-> Angle brackets `>` are used for block quotes.  
-Technically not every line needs to start with a `>` as long as
-there are no empty lines between paragraphs.  
-> Looks kinda ugly though.
-> > Block quotes can be nested.  
-> > > Multiple Levels
->
-> Most markdown syntaxes work inside block quotes.
->
-> * Lists
-> * [Links][arbitrary_id]
-> * Etc.
-```
   
   
 ### Inline Code

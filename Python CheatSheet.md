@@ -888,7 +888,7 @@ while True:
 
 ### Raising Exception
 ```python
-raise ValueError('some error message')
+raise Exception('some error message')
 ```
 
 ### Finally
@@ -901,6 +901,7 @@ finally:
   print('All done!')
 
 ```
+
 
 
 

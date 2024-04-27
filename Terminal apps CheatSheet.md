@@ -113,6 +113,13 @@ Those option can be specified either in the command line before executing `top` 
 * `s` order the process display to have a certain delay in seconds between each update
 * `U` only show the processes owned by the user
 
+
+to show only specific processes : 
+```bash
+top -l 1 -stats pid,command,cpu,time,th,pstate | grep -E "PID|command1|command2"
+top -pid <command1_pid> -pid <command2_pid> -stats pid,command,cpu,time,th,pstate
+```
+
 ## [ghostscript](https://ghostscript.readthedocs.io/en/latest/Use.html#use-html)
 **Conversion of vector type files$$
 
@@ -162,3 +169,58 @@ todo
 ## [openshot video editor]()
 
 todo
+
+
+## [calibre]()
+
+Commands :
+
+* calibre
+* calibre-customize
+* calibre-debug
+* calibre-server
+* calibre-smtp
+* calibredb
+* ebook-convert
+* ebook-edit
+* **ebook-meta**
+* ebook-polish
+* ebook-viewer
+* fetch-ebook-metadata
+* lrf2lrs
+* lrfviewer
+* lrs2lrf
+* web2disk
+* ebook-device
+* markdown-calibre
+
+
+
+## [sortgs](https://github.com/WittmannF/sort-google-scholar)
+
+```bash
+sortgs "keywords" OR "KEYWORDS" --sortby "cit/year" --nresults 200
+```
+
+Other `--sortby` options are:
+* `Citations` (default)
+* `Rank` (given by google scholar)
+* `Author`
+* `Title`
+* `Year`
+* `Publisher`
+* `Venue`
+* `Source`
+
+
+
+Rank	Author	Title	Citations	Year	Publisher	Venue	Source
+
+
+## [exiftool]
+
+to update research files (print the files to pdf if they are giving errors):
+```bash
+exiftool -all= *.pdf
+```
+

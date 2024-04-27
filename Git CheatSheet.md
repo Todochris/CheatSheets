@@ -2,7 +2,7 @@
 Cheat Sheet for Git commands version control, created by [bytecurl](https://github.com/bytecurl)
 Modified by Christian Toderascu.
 
-**last update: 20231017**
+**last update: 20240327**
 
 last update available on [GitHub - Git CheatSheet.md](https://github.com/Todochris/CheatSheets/blob/main/Git%20CheatSheet.md)  
 [link of the source](https://github.com/bytecurl/github-cheatsheet-markdown/tree/main)
@@ -38,6 +38,7 @@ Set automatic command line coloring for Git for easy reviewing
 Set the default branch name for new repositories to main
 
 [Tutorial for ssh keys management](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
+
 
 ## SUMMARY to do a quick push
 
@@ -96,13 +97,14 @@ Creates a new branch
     $ git branch -a
 Show a list of all current branch in local and remote
 
+    $ git switch [branch-name]
+Switches to the specified branch and updates the working directory. The operation is aborted if the operation leads to loss of local changes
+
     $ git checkout [branch-commit-tag]
 Switch to another branch and check it out into your working directory (position of your HEAD). 
-    * Add `^<num>`  after [branch] in order to go up one commit at a time, the <num> is not mandatory but indicates the number of the parent at a merged commit (if not specified it's 1)
-    * Add `~<num>` after [branch] in order to go up a number of commits specified by <num>
-
-    $ git switch -c [branch-name]
-Switches to the specified branch and updates the working directory
+        * Add `^<num>`  after [branch] in order to go up one commit at a time, the <num> is not mandatory but indicates the number of the parent at a merged commit (if not specified it's 1)
+        * Add `~<num>` after [branch] in order to go up a number of commits specified by <num>
+        * To only switch HEAD, preferably use `git switch [branch-commit-tag]`
 
     $ git merge [branch-name]
 Merges or combines the specified branch’s history into the current branch. This is usually done in pull requests, but is an important Git operation. Usually we merge [branch] after placing ourselves on the main branch.
@@ -126,8 +128,8 @@ Set to follow the local [branch] for the remote branch main. If you want to foll
     $ git add [file]
 Add a file as it looks now to your next commit (stage), use `*` to say all files and folders content
 
-    $ git reset [file]
-Unstage a file while retaining the changes in working directory. 
+    $ git reset [file/commit]
+Unstage a file or a commit while retaining the changes in working directory.
 
     $ git rm [file]
 Delete the file from project and stage the removal for commit
@@ -201,8 +203,12 @@ Diff of what is changed but not staged for the file [file].
 
     $ git diff --staged
 Diff of what is staged but not yet committed, add option --name-only to get only the names of the files
+
     $ git diff [first-branch]...[second-branch]
 Shows content differences between two branches
+
+    $ git ls-tree --full-tree -r --name-only HEAD
+List all the files in the HEAD commit
 
     $ git show [commit]
 Outputs metadata and content changes of the specified commit
@@ -271,12 +277,17 @@ Copies a series of commits and puts them ahead of HEAD
     $ git reset [commit]
 Undoes all commits after [commit], preserving changes locally
 
+    $ git reset [file]
+Remove a file from the staging area, but keep the changes in working directory
+
     $ git reset --hard [commit]
 Clear staging area, rewrite working tree from specified commit
 
     $ git revert [commit]
 Undoes all commits after [commit], and creates a new commit (to use remotely)
 
+    $ git restore [file]
+Discard changes in file from the working directory
 
 ## TEMPORARY COMMITS
 
@@ -298,7 +309,10 @@ Discard the changes from top of stash stack
 
 - git: an open source, distributed version-control system
 - GitHub: a platform for hosting and collaborating on Git repositories
-- commit: a Git object, a snapshot of your entire repository compressed into a SHA
+- fetch: download changes from remote repository to local repository (but not apply them)
+- pull: refresh local repository with remote repository and applies them
+- commit: a Git object, a local snapshot/save of your entire repository compressed into a SHA
+- push: upload local repository content to a remote repository
 - branch: a lightweight movable pointer to a commit
 - clone: a local version of a repository, including all commits and branches
 - remote: a common repository on GitHub that all team members use to exchange their changes

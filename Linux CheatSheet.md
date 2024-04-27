@@ -17,20 +17,21 @@ last update available on [GitHub - Linux CheatSheet.md](https://github.com/Todoc
 | cd dir        | change directory to dir
 | cd            | change directory to home
 | cd -P Link    | change directory to Link (a symbolic link) through the real path
-| pwd           | show current directory
-| mkdir dir     | create a directory dir
+| cd ../..      | go up 2 levels
+| pwd           | show current directory (print working directory)
+| mkdir dir     | create a directory dir (make directory)
+| touch file    | create or update file
 | rm file       | delete file
 | unlink file   | delete only one file (prefer using it for symbolic links)
 | rm file       | delete file 
 | rm -r dir     | remove directory dir recursivly
 | rm -i path    | ask for confirmation before removing files/directory from path
 | dir           | with a "/" at the end means the content of the directory, without it means the directory
-| cp file       | copy file1 to file2
+| cp file1 file2| copy file1 to file2
 | cp -R dir     | copy dir1 to dir2; create dir2 if it doesn't exist
 | mv source destination | rename or move "source" to "destination"
 | mv source destination/ | move source inside destination/
 | ln -s path LinkName | create symbolic link to path named LinkName in the current directory. Create, prefer the use of `unlink` to delete a symbolic link
-| touch file    | create or update file
 | cat > file    | places standard input into file
 | more file     | output the contents of file page by page
 | less file     | output the contents of file, but with more options

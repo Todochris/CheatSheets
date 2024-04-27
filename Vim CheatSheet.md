@@ -116,7 +116,19 @@ Tip: Prefix a cursor movement command with a number to repeat it. For example, 4
 | y                 | yank (copy) marked text
 | d                 | delete marked text
 | ~                 | switch case
-| g Ctrl+g          | Lines, words, characters and Bites selected
+| g Ctrl+g          | Lines, words, characters and Bites selected and counted
+
+### Folding commands
+| command           | description       |
+| :---------------- | :---------------- |
+| zf#j              | create a fold from the cursor down # lines
+| zf/string         | create a fold from the cursor to string
+| zi                | open all folds
+| zM                | close all folds
+| zo                | open a fold
+| zc                | close a fold
+| zm                | increase foldlevel by one
+| zr                | decrease foldlevel by one
 
 ## Registers
 | command           | description       |
@@ -210,3 +222,10 @@ Tip Register 0 contains always the value of the last yank command.
 | Ctrl+w j          | move cursor to the window below (horizontal split)
 | Ctrl+w k          | move cursor to the window above (horizontal split)
 
+
+
+## Github Copilot for Vim
+
+[Github repo](https://github.com/github/copilot.vim)
+
+If you installed it using git, you can update it by running `git pull` in the `~/.vim/pack/github/start/copilot.vim` directory.

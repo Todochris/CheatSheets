@@ -64,8 +64,8 @@ A = [1, 2,  3,  4;      % Set A to be a 3×4 matrix
 | x(1:3:end)        | Every 3rd elem. of x (1st to last)
 | x(x>6)            | List elements > 6.
 | x(x>8)=8          | change elements using condition
-| A(4,:)            | Get the 4th row of A
-| A(:,3)            | Get the 3rd column of A
+| A(4,:)            | Get the 4th row of A *(y direction selection in matrix)*
+| A(:,3)            | Get the 3rd column of A *(x direction selection in matrix)*
 | A(6, 1:3)         | Get 1st to 3rd elem in 6th row
 | zeros(9, 5)       | Make a 9 × 5 matrix of zeros
 | ones(9, 5)        | Make a 9 × 5 matrix of ones
@@ -221,16 +221,16 @@ Only sin functions are given in example but there are analogous elementwise trig
 
 ### Functions
 * Defined in m-file (filename.m) and it needs to be in the path of matlab in order to be executed.
-* File must have the same name as the function 
+* File must have the same name as the function, it cannot start with a number
 * To check all function (fList) and program (pList) dependencies of a function use the command `[fList,pList] = matlab.codetools.requiredFilesAndProducts('function.m')`
 ```matlab
 function output = addNumbers(x, y)
-    % function summing up two numbers
-    % Args:
-        % x (int, float) : a number
-        % y (int, float) : a number
-    % Returns:
-        % output (int, float) : the result
+% function summing up two numbers
+% Args:
+%   x (int, float) : a number
+%   y (int, float) : a number
+% Returns:
+%   output (int, float) : the result
     output = x + y; %multiple or var nr of args possible end
 ```
 
@@ -307,29 +307,42 @@ end % control structures terminate with end
 ### Scalable function in matlab
 
 ```matlab
-add_var = struct;
-add_var.param1 = 5 ; 
+param1 = 5 ; 
 
-disp(fun(1,[])); % this will use the default parameters
-disp(fun(1,add_var)); % this will use the parameters defined in add_var
+disp(fun(1)); % this will use the default parameters
+disp(fun(1,'param1',param1)); % this will use the parameters defined in param1
 
-function output = fun(var1, add_var)
-    % scalable function in matlab
-    % Args:
-        % var1 (int, float) : a mandatory variable for your function
-        % add_var (struct) : 
-            % = [] for default values in the function
-            % add_var.param1 (int, float) : param1 value instead of default
-    % Returns:
-        % output () : the result
+function output = fun(var1, varargin)
+% scalable function in matlab
+% Args:
+%   var1 (int, float) : a mandatory variable for your function
+%   varargin: optional arguments
+%       param1 (string) : next argument is param1 value instead of default
+%       -v (string) : verbose mode (can also be 'verbose')
+% Returns:
+%   output () : the result
 
-    if ~isempty(add_var) & any(ismember(fields(add_var),'param1'))
-        param1 = add_var.param1;
-    else
-        param1 = 1 ; % "default_value"
+
+% Initialise optional arguments
+param1 = 1; % default value
+verbose_enabled = 0;
+iteration_varargin = 1;
+options = ['verbose', '-v','param1'];
+while iteration_varargin ~= length(varargin) + 1
+    if strcmp(varargin{iteration_varargin}, 'verbose') || strcmp(varargin{iteration_varargin}, '-v')
+        verbose_enabled = 1;
+    elseif strcmp(varargin{iteration_varargin}, 'param1')
+        param1 = varargin{iteration_varargin+1};
+        iteration_varargin = iteration_varargin + 1;
     end
+    iteration_varargin = iteration_varargin + 1;
+end
 
-    output = var1*param1;
+output = var1*param1;
+
+if verbose_enabled
+    disp(output);
+end
 
 end
 ```
@@ -431,4 +444,31 @@ further functions: movmax, movmin, cummax, cummin, movprod, movsum, cumsum, cump
 | command           | description       |
 | :---------------- | :---------------- |
 | split(str,[delimiters]) | splits str on spaces and commas
+| contains(str,pattern) | check if pattern is in str, returns logical
+| strfind(str,pattern) | find pattern in str, returns index
+| strrep(str,old,new) | replace old with new in str
+| join(str_array,delimiter) | join cell array of strings with delimiter
+| ----------------- | ----------------- |
+| ischar(str)       | Check if input is character array
+| iscellstr(str)    | Check if input is cell array of strings
+| isstring(str)     | Check if input is string array
+| isStringScalar(str) | Check if input is string scalar
 
+
+
+
+## External modules
+
+
+### iso2mesh
+
+
+### jsonlab
+
+save in a json format variables of matlab. They can be afterwards read by Python using json.load() for instance.
+
+```matlab
+variable = struct()
+fileID=fopen("test.txt",'w')
+fprintf(fileID,savejson('',variable))
+```
