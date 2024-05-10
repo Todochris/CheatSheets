@@ -5,12 +5,33 @@
 \usepackage{amsfonts}
 \usepackage{textcomp}
 
+\usepackage{xcolor}
 
 \begin{document}
 
 
+\section{textcomp}
+\superscript{\textregistered} % ® for registered trademark
+% look on website for registered trademarks https://branddb.wipo.int/en/quicksearch?
+\section{xcolor}
 
-\superscript{\registered} % ® in textcomp package
+\textcolor{red}{Red text between curly braces}
+
+\begin{color}{red}
+    Red text in a closed environment
+\end{color}
+
+\color{red}
+Starting whole document in red text
+\color{black}
+Starting whole document in black text
+
+\section{enumitem}
+
+\begin{itemize}[nosep]
+    \item List without
+    \item any vertical spacing
+\end{itemize}
 
 
 \end{document}

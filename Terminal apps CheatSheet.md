@@ -104,6 +104,8 @@ set-option -g history-limit 10000
 ```
 
 ## [top](https://ss64.com/osx/top.html)
+--------
+
 Those option can be specified either in the command line before executing `top` with the addition of a `-` at the start of each option [in MacOs](https://ss64.com/osx/top.html), or they can be typed during execution in [Linux](https://www.man7.org/linux/man-pages/man1/top.1.html) and MacOs
 * `o` order the process display to sort by the input key
     * pid
@@ -121,6 +123,8 @@ top -pid <command1_pid> -pid <command2_pid> -stats pid,command,cpu,time,th,pstat
 ```
 
 ## [ghostscript](https://ghostscript.readthedocs.io/en/latest/Use.html#use-html)
+----------------
+
 **Conversion of vector type files$$
 
 gs [options] {filename 1} ... [options] {filename N} ...
@@ -139,6 +143,7 @@ ps2pdf -dEPSCrop *.eps
 ```
 
 ## [diskutil](https://ss64.com/osx/diskutil.html)
+-------------
 
 | command       | description   |
 | :------------ | :------------ |
@@ -214,13 +219,29 @@ Other `--sortby` options are:
 
 
 
-Rank	Author	Title	Citations	Year	Publisher	Venue	Source
 
 
-## [exiftool]
+## [exiftool]()
 
 to update research files (print the files to pdf if they are giving errors):
 ```bash
 exiftool -all= *.pdf
+```
+
+
+## [Node.js](https://nodejs.org/en/)
+
+```bash
+npm # display help
+npm ls # list all installed packages
+```
+
+## [Mermaid](https://github.com/mermaid-js/mermaid-cli)
+------------
+
+```bash
+mmdc -h # display help
+mmdc -i 'gantt chart.txt' -o '3D TRC M3 gantt chart.png' -w 1200
+    # convert gantt chart to png (o: output, w: width)
 ```
 

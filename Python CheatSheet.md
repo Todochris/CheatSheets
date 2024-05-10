@@ -735,6 +735,9 @@ from <module_name> import <function_name>
 import <module_name> as m
 from <module_name> import <function_name> as m_function
 from <module_name> import *
+
+from importlib import reload  # Python 3.4+
+reload(<module_name>)        # Reloads the module.
 ```
 
 
