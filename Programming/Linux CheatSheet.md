@@ -1,11 +1,10 @@
-# Linux CheatSheet
-Cheat Sheet for Linux/Bash terminal, created by someone_todo.
+# Bash CheatSheet
+Cheat Sheet for Linux/Bash terminal.
 Modified by Christian Toderascu.
 
 **last update: 20231017**
 
-last update available on [GitHub - Linux CheatSheet.md](https://github.com/Todochris/CheatSheets/blob/main/Linux%20CheatSheet.md)  
-[link of the source](todo)
+last update available on [GitHub - Bash CheatSheet.md](https://github.com/Todochris/CheatSheets/blob/main/Bash%20CheatSheet.md)  
 
 
 ## File commands
