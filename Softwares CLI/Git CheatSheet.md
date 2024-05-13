@@ -8,37 +8,12 @@ last update available on [GitHub - Git CheatSheet.md](https://github.com/Todochr
 [link of the source](https://github.com/bytecurl/github-cheatsheet-markdown/tree/main)
 
 
-![Image](/img/screenshot_github_cheat-sheet.png "Credits: GitHub, Inc. @ www.github.com")
+## installation & learning
 
-Git is the free and open source distributed version control system that’s responsible for everything GitHub related that happens locally on your computer. This cheat sheet features the most important and commonly used Git commands for easy reference.
-
-
-## INSTALLATION & GUIS
-
-[http://git-scm.com](http://git-scm.com)
-
-[Learn git branching](https://learngitbranching.js.org/)
-
-
-
-## SETUP * CONFIGURE TOOLING
-
-**Configuring user information used across all local repositories**
-
-    $ git config --global user.name "[firstname lastname]"
-Set a name that is identifiable for credit when review version history
-
-    $ git config --global user.email "[valid email]"
-Set an email address that will be associated with each history marker
-
-    $ git config --global color.ui auto
-Set automatic command line coloring for Git for easy reviewing
-
-    $ git config --global init.defaultBranch main
-Set the default branch name for new repositories to main
-
-[Tutorial for ssh keys management](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
-
+* [http://git-scm.com](http://git-scm.com)
+* [Learn git branching](https://learngitbranching.js.org/)
+* [Git guide by medium](https://medium.com/@jake.page91/the-guide-to-git-i-never-had-a89048d4703a)
+* [.gitignore templates](https://github.com/github/gitignore)
 
 ## SUMMARY to do a quick push
 
@@ -57,94 +32,59 @@ Set the default branch name for new repositories to main
 5. git push --set-upstream origin main
 
 
-## INIT * CREATE REPOSITORIES
+## Create Repositories
 
-**A new repository can either be created locally, or an existing repository can be cloned. When a repository was initialized locally, you have to push it to GitHub afterwards.**
+| command       | description   |
+| :------------ | :------------ |
+| git init      | turns an existing directory into a new Git repository inside the folder
+| git clone [url] | retrieves or clones a repository that already exists on GitHub, including all of the files, branches, and commits
 
-    $ git init
-The git init command turns an existing directory into a new Git repository inside the folder you are running this command. After using the git init command, link the local repository to an empty GitHub repository using the following command:
+## Synchronize Changes
 
-    $ git clone [url]
-Retrieve or clone (download) a repository that already exists on GitHub, including all of the files, branches, and commits
+| command        | description    |
+| :------------  | :------------  |
+| git fetch   | downloads all history from the remote tracking branches
+| git merge   | combines remote tracking branches into current local branch
+| git push    | uploads all local branch commits to GitHub
+| git pull    | updates your current local working branch with all new commits from the corresponding remote branch on GitHub
 
-## THE .gitignore FILE
+## Branches
 
-> **Sometimes it may be a good idea to exclude files from being tracked with Git. This is typically done in a special file named .gitignore. You can find helpful templates for .gitignore files at [github.com/github/gitignore](https://github.com/github/gitignore).**
+| command       | description   |
+| :------------ | :------------ |
+| git branch [branch-name] | creates a new branch
+| git branch -a     | shows a list of all current branches in local and remote
+| git switch [commit] | switches to the specified branch/commit and updates the working directory
+| git checkout [commit] | switches to another branch and checks it out into your working directory
+| git merge [commit] | merges or combines the specified branch's history into the current branch
+| git branch -d [branch-name] | deletes the specified branch
+| git branch -m [branch-name] | renames the current branch name
+| git branch -f [branch-name] [commit-new] | moves a branch to another commit
+| git branch -u origin/main [branch] | sets to follow the local branch for the remote branch
 
-## SYNCHRONIZE CHANGES
+## Selecting a commit
 
-**Synchronize your local repository with the remote repository on GitHub.com**
+[commit] can be replaced by a [branch-name], a [tag-name] or a commit with or without indications
 
-    $ git fetch
-Downloads all history from the remote tracking branches. It does not change the state of the local files !
+| [commit]      | description   |
+| :------------ | :------------ |
+| HEAD          | the current branch you are on
+| HEAD~[n]      | the nth parent of the current branch (n=1 by default)
+| HEAD^[n]      | the nth parent of the current branch on merged commits branches
 
-    $ git merge
-Combines remote tracking branches into current local branch
+## Stage & Snapshot
 
-    $ git push
-Uploads all local branch commits to GitHub. Add -f if you want to force the deletion of the remote folder and put instead your local folder
+| command        | description    |
+| :------------  | :------------  |
+| git add [file] | adds a file as it looks now to your next commit (stage)
+| git reset [file/commit] | unstages a file or a commit while retaining the changes in working directory
+| git rm [file] | deletes the file from project and stages the removal for commit
+| git rm --cached  [file] | stages the delete of the file for commit without deleting it locally
+| git rm --ignore-unmatch [file] | avoid the error message if the file is not in the directory
+| git mv [existing path] [new path] | changes an existing file path and stages the move
+| git commit -m "[descriptive message]" | commits your staged content as a new commit snapshot
+| git commit --amend | todo
 
-    $ git pull
-Updates your current local working branch with all new commits from the corresponding remote branch on GitHub. git pull is a combination of git fetch and git merge
-
-## BRANCHES
-
-**Isolating work in branches, changing context, and integrating changes git branch list your branches. a * will appear next to the currently active branch: Branches are an important part of working with Git. Any commits you make will be made on the branch you’re currently “checked out” to. Use git status to see which branch that is.**
-
-    $ git branch [branch-name]
-Creates a new branch
-
-    $ git branch -a
-Show a list of all current branch in local and remote
-
-    $ git switch [branch-name]
-Switches to the specified branch and updates the working directory. The operation is aborted if the operation leads to loss of local changes
-
-    $ git checkout [branch-commit-tag]
-Switch to another branch and check it out into your working directory (position of your HEAD). 
-        * Add `^<num>`  after [branch] in order to go up one commit at a time, the <num> is not mandatory but indicates the number of the parent at a merged commit (if not specified it's 1)
-        * Add `~<num>` after [branch] in order to go up a number of commits specified by <num>
-        * To only switch HEAD, preferably use `git switch [branch-commit-tag]`
-
-    $ git merge [branch-name]
-Merges or combines the specified branch’s history into the current branch. This is usually done in pull requests, but is an important Git operation. Usually we merge [branch] after placing ourselves on the main branch.
-
-    $ git branch -d [branch-name]
-Deletes the specified branch
-
-    $ git branch -m [branch-name]
-Renames the current branch name
-
-    $ git branch -f [branch-name] [commit-new]
-Move a branch [branch-name] to another commit [commit-new]
-
-    $ git branch -u origin/main [branch]
-Set to follow the local [branch] for the remote branch main. If you want to follow another branch than main.
-
-## STAGE & SNAPSHOT
-
-**Working with snapshots and the Git staging area git status show modified files in working directory, staged for your next commit**
-
-    $ git add [file]
-Add a file as it looks now to your next commit (stage), use `*` to say all files and folders content
-
-    $ git reset [file/commit]
-Unstage a file or a commit while retaining the changes in working directory.
-
-    $ git rm [file]
-Delete the file from project and stage the removal for commit
-
-    $ git rm --cached --ignore-unmatch [file]
-Stage the delete of the file for commit without deleting it locally `--cached`, usefull if files where added to .gitignore. `--ignore-unmatch` is to avoid the error message if the file is not in the directory
-
-    $ git mv [existing path] [new path]
-Change an existing file path and stage the move
-
-    $ git commit -m "[descriptive message]"
-Commit your staged content as a new commit snapshot
-
-    $ git commit --amend
-todo
 
 ## TAGGING A VERSION OF THE CODE
 
@@ -305,6 +245,31 @@ Write working from top of stash stack
     $ git stash drop
 Discard the changes from top of stash stack
 
+
+## setup and configure tooling
+
+**Configuring user information used across all local repositories**
+
+    $ git config --global user.name "[firstname lastname]"
+Set a name that is identifiable for credit when review version history
+
+    $ git config --global user.email "[valid email]"
+Set an email address that will be associated with each history marker
+
+    $ git config --global color.ui auto
+Set automatic command line coloring for Git for easy reviewing
+
+    $ git config --global init.defaultBranch main
+Set the default branch name for new repositories to main
+
+[Tutorial for ssh keys management](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
+
+
+
+
+
+
+
 ## Glossary
 
 - git: an open source, distributed version-control system
@@ -321,8 +286,6 @@ Discard the changes from top of stash stack
 - HEAD: representing your current working directory, the HEAD pointer can be moved to different branches, tags, or commits when using git switch
 
 ----
-
-© 2022 GitHub, Inc.
 
 
 
