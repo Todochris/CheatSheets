@@ -27,9 +27,10 @@ last update available on [GitHub - Git CheatSheet.md](https://github.com/Todochr
 1. git init
 2. git add *
 3. git commit -m "first commit"
-4. git branch -M main
 4. git remote add origin git@github.com:GITHUB_USERNAME/REPO_NAME.git
 5. git push --set-upstream origin main
+
+Points 4. and 5. can be raplaced by `gh rep create` and accepting the creation of the remote "origin" using the [GitHub CLI tool "gh"](https://cli.github.com/)
 
 
 ## Create Repositories
@@ -45,10 +46,35 @@ last update available on [GitHub - Git CheatSheet.md](https://github.com/Todochr
 | :------------  | :------------  |
 | git fetch   | downloads all history from the remote tracking branches
 | git merge   | combines remote tracking branches into current local branch
+| git rebase  | applies local commits on top of the remote tracking branch
 | git push    | uploads all local branch commits to GitHub
 | git pull    | updates your current local working branch with all new commits from the corresponding remote branch on GitHub
+| git pull --rebase   | Fetch and rebase any commits from the tracking remote branch.
+|  -------------------- | :---------------------- |
+| `git revert [commit]` | Undoes all commits after [commit], and creates a new commit (to use remotely)
 
-## Branches
+
+Details:
+    * [url] On GitHub, the url that points to the repo is like this `git@github.com:GITHUB_USERNAME/REPO_NAME.git`
+
+`git rebase` details:
+    * It has the advantage of being able to keep a linear sequence of commits compared to [branch-destination] in order to have a more clear history of the repo.
+    * -i option to make it interactive and specifically choose the commits you want to include and their order.
+    * [branch-source] if not specified, the current HEAD is taken
+    * Usually you rebase 2 times (if you can push to main in a distant repo)
+        1. git rebase main bugFix
+        2. git rebase bugFix main (doesn't do any change, just moves the main branch ahead)
+
+`git fetch` details:
+    * [branch] can be replaced by [source-remote-branch-commit]:[destination-local-branch-commit]. If you don't specify a source branch, you are creating then locally a new branch named after [destination-local-branch-commit]
+
+`git push` details:
+    * [branch] can be replaced by [source-local-branch-commit]:[destination-remote-branch-commit]. If you don't specify a source, you are deleting the [destination-remote-branch-commit]
+
+
+## Branches and commits
+
+### Tracking
 
 | command       | description   |
 | :------------ | :------------ |
@@ -56,11 +82,21 @@ last update available on [GitHub - Git CheatSheet.md](https://github.com/Todochr
 | git branch -a     | shows a list of all current branches in local and remote
 | git switch [commit] | switches to the specified branch/commit and updates the working directory
 | git checkout [commit] | switches to another branch and checks it out into your working directory
-| git merge [commit] | merges or combines the specified branch's history into the current branch
+| git checkout tags/[tag-name] | checks out the specified tag and changes the working directory
 | git branch -d [branch-name] | deletes the specified branch
 | git branch -m [branch-name] | renames the current branch name
 | git branch -f [branch-name] [commit-new] | moves a branch to another commit
 | git branch -u origin/main [branch] | sets to follow the local branch for the remote branch
+
+
+### Changes
+
+| command       | description   |
+| :------------ | :------------ |
+| `git rebase [branch-destination] [branch-source]` | Apply any commits ahead of specified one [branch-destination].
+| `git merge [branch-source]` | Merge the specified branch [branch-source] into the current branch
+| `git cherry-pick [Commit1] [Commit2] [...]` | Copies a series of commits and puts them ahead of HEAD
+
 
 ## Selecting a commit
 
@@ -70,7 +106,7 @@ last update available on [GitHub - Git CheatSheet.md](https://github.com/Todochr
 | :------------ | :------------ |
 | HEAD          | the current branch you are on
 | HEAD~[n]      | the nth parent of the current branch (n=1 by default)
-| HEAD^[n]      | the nth parent of the current branch on merged commits branches
+| HEAD^[n]      | the nth parent of the current branch on merged commits branches (where there are multiple parents)
 
 ## Stage & Snapshot
 
@@ -83,172 +119,73 @@ last update available on [GitHub - Git CheatSheet.md](https://github.com/Todochr
 | git rm --ignore-unmatch [file] | avoid the error message if the file is not in the directory
 | git mv [existing path] [new path] | changes an existing file path and stages the move
 | git commit -m "[descriptive message]" | commits your staged content as a new commit snapshot
-| git commit --amend | todo
+| git commit --amend | changes the last commit with the staged changes and a new message
+| `git restore [file]`  | Discard changes in file from the working directory
 
 
-## TAGGING A VERSION OF THE CODE
+## Tagging a version of the code
 
-    $ git tag
-list the tags of your repo
+Tagging a commit like "a milestone" (key steps) you can refer to them like branches. If you don't specify [commit], the tag is going to be placed at your HEAD. [version] can be for instance v1 or v1.2.3
 
-    $ git tag -a [version] [commit]
-tags mark forever certain commits like "milestone" (key steps) you can refer to them like branches. If you don't specify [commit], the tag is going to be placed at your HEAD. [version] can be for instance v1 or v1.2.3 
-A vim text will open and you will be able to type your description of the tag. First line should be title of the tag, the next lines are details about the version. Type `:wq` to save and exit.
-
-    $ git tag -d [version]
-delete the tag [version]
-
-    $ git push origin --tags
-Transmit local tags to remote repo
+| command       | description  |
+| :------------ |  :------------ |
+| git tag     | List tags of your repo
+| git tag -a [version] [commit] | Create a new annotated tag
+| git tag -d [version] | Delete a tag
+| git push origin --tags | Transmit local tags to remote repo
 
 
 ### To change the tag from a commit to the checked-out commit
 
-    $ git push origin :refs/tags/<tagname>
-Delete the tag on any remote before you push
+| command       | description  |
+|  :------------  |  :------------  |
+| `git push origin refs/tags/<tagname>` | Delete the tag on any remote before you push |
+| `git tag -fa <tagname>` | Replace the tag to reference the most recent commit |
+| `git push origin --tags` | Push the tag to the remote origin |
 
-    $ git tag -fa <tagname>
-Replace the tag to reference the most recent commit
+## Logs and inspection of modifications
 
-    $ git push origin --tags
-Push the tag to the remote origin
+Browse and inspect the evolution of project files
 
-## LOGS AND INSPECTION OF MODIFICATIONS
-
-**Browse and inspect the evolution of project files**
-
-    $ git status
-Check the status of your repository to see what changes have been made
-
-    $ git log
-Show all commits in the current branch’s history. Lists version history for the current branch
-
-    $ git log --all --decorate --oneline --graph
-Shows a tree of all the commits of the repo. Taken from [Pretty Git branch graphs](https://stackoverflow.com/a/35075021)
-
-    $ git log --follow [file]
-Lists version history for a file, beyond renames (works only for a single file)
-
-    $ git log [first-branch]..[second-branch]
-Show the commits on first-branch that are not on second-branch
-
-    $ git log --stat -M
-Show all commit logs with indication of any paths that moved
-
-    $ git diff
-Diff of what is changed but not staged.
-
-    $ git diff [file]
-Diff of what is changed but not staged for the file [file].
-
-    $ git diff --staged
-Diff of what is staged but not yet committed, add option --name-only to get only the names of the files
-
-    $ git diff [first-branch]...[second-branch]
-Shows content differences between two branches
-
-    $ git ls-tree --full-tree -r --name-only HEAD
-List all the files in the HEAD commit
-
-    $ git show [commit]
-Outputs metadata and content changes of the specified commit
-
-    $ git show [SHA]
-Show any object in Git in human-readable format
-
-    $ git describe [branch-commit]
-Shows `<tag>_<numCommits>_g<hash>`, <tag> is the most recent tag, <numCommits> is the number of commits between [branch-commit] and the most recent tag, <hash> is the identifier of [branch-commit].
- 
-
-## IGNORING PATTERNS
-
-**Preventing unintentional staging or committing of files**
-
-    logs/
-    *.notes
-    pattern*/
-
-Save a file with desired patterns as .gitignore with either direct string matches or wildcard globs.
-
-    $ git config --global core.excludesfile [file]
-System wide ignore pattern for all local repositories
-
-## SHARE & UPDATE
-
-**Retrieving updates from another repository and updating local repos**
-
-    $ git remote add origin [url]
-    $ git remote set-url origin [url]
-Specifies the remote repository for your local repository. The url points to a repository on GitHub like this `git@github.com:GITHUB_USERNAME/REPO_NAME.git`
-
-    $ git fetch [alias] [branch]
-Fetch down all the remote branches [branch] from the remote repository [alias]. [alias] and [branch] are not mandatory, especially if your head is already at the main branch that is setup as following a remote branch.
-    * [alias] in most cases it's `origin`
-    * [branch] can be replaced by [source-remote-branch-commit]:[destination-local-branch-commit]. If you don't specify a source branch, you are creating then locally a new branch named after [destination-local-branch-commit]
-
-    $ git rebase [branch-destination] [branch-source]
-Apply any commits of current branch [branch-source] ahead of specified one [branch-destination]. It has the advantage of being able to keep a linear sequence of commits compared to [branch-destination] in order to have a more clear history of the repo.
-    * -i option to make it interactive and specifically choose the commits you want to include and their order.
-    * [branch-source] if not specified, the current HEAD is taken
-    * Usually you rebase 2 times (if you can push to main in a distant repo)
-        1. git rebase main bugFix
-        2. git rebase bugFix main (doesn't do any change, just moves the main branch ahead)
-
-    $ git merge [alias]/[branch]
-Merge a remote branch into your current branch to bring it up to date
-
-    $ git push
-todo
-
-    $ git push [alias] [branch]
-Transmit local branch [branch] commits to the remote repository [alias] branch [branch]. [alias] and [branch] are not mandatory, by not specifying them, it uploads all the commits from the current branch.
-    * [alias] in most cases it's `origin`
-    * [branch] can be replaced by [source-local-branch-commit]:[destination-remote-branch-commit]. If you don't specify a source, you are deleting the [destination-remote-branch-commit]
-
-    $ git pull
-Fetch and merge any commits from the tracking remote branch: Updates your current local working branch with all new commits from the corresponding remote branch on GitHub. `git pull` is a combination of git fetch and git merge
-
-    $ git pull --rebase
-Fetch and rebase any commits from the tracking remote branch.
-
-    $ git cherry-pick [Commit1] [Commit2] [...]
-Copies a series of commits and puts them ahead of HEAD
-
-    $ git reset [commit]
-Undoes all commits after [commit], preserving changes locally
-
-    $ git reset [file]
-Remove a file from the staging area, but keep the changes in working directory
-
-    $ git reset --hard [commit]
-Clear staging area, rewrite working tree from specified commit
-
-    $ git revert [commit]
-Undoes all commits after [commit], and creates a new commit (to use remotely)
-
-    $ git restore [file]
-Discard changes in file from the working directory
-
-## TEMPORARY COMMITS
-
-**Temporarily store modified, tracked files in order to change branches**
-
-    $ git stash
-Save modified and staged changes
-
-    $ git stash list
-List stack-order of stashed file changes
-
-    $ git stash pop
-Write working from top of stash stack
-
-    $ git stash drop
-Discard the changes from top of stash stack
+| Command               | Description             |
+| :-------------------- | :---------------------- |
+| `git status`          | Check changes and stage of current repo
+| `git log`             | Show all commits in the current branch's history. Lists version history for the current branch
+| `git log --all --decorate --oneline --graph` | Shows a tree of all the commits of the repo.
+| `git log --follow [file]` | Lists version history for a file, beyond renames (works only for a single file)
+| `git log [branch1]..[branch2]` | Show the commits on first-branch that are not on second-branch
+| `git log --stat -M`   | Show all commit logs with indication of any paths that moved
+| `git diff`            | Diff of what is changed but not staged.
+| `git diff [file]`     | Diff of what is changed but not staged for the file [file].
+| `git diff --staged`   | Diff of what is staged but not yet committed, add option --name-only to get only the names of the files
+| `git diff [branch1]...[branch2]` | Shows content differences between two branches
+| `git ls-tree --full-tree -r --name-only HEAD` | List all the files in the HEAD commit
+| `git show [commit]`   | Outputs metadata and content changes of the specified commit
+| `git show [SHA]`      | Show any object in Git in human-readable format
+| `git describe [commit]`| shows details about commmit
+| `git blame [file]`    | Shows what revision and author last modified each line of a file
+| `git reflog`          | List of actions that have been taken in the repository
 
 
-## setup and configure tooling
+`git describe` format is the following : `<tag>_<numCommits>_g<hash>`
+    * <tag> most recent tag
+    * <numCommits> number of commits between [commit] and the most recent tag
+    * <hash> identifier of [commit].
 
-**Configuring user information used across all local repositories**
+## Temporary commits
+
+Temporarily store modified, tracked files in order to change branches
+
+| command       | description   |
+|  :------------  |  :------------  |
+| `git stash`   | Save modified and staged changes |
+| `git stash list` | List stack-order of stashed file changes |
+| `git stash pop` | Write working from top of stash stack |
+| `git stash drop` | Discard the changes from top of stash stack |
+
+## Setup and configure tooling
+
+### Configuring user information used across all local repositories
 
     $ git config --global user.name "[firstname lastname]"
 Set a name that is identifiable for credit when review version history
@@ -262,10 +199,31 @@ Set automatic command line coloring for Git for easy reviewing
     $ git config --global init.defaultBranch main
 Set the default branch name for new repositories to main
 
+    $ git config --global core.excludesfile [file]
+System wide ignore pattern for all local repositories
+
+
+## Remote repo configuration
+
+| command       | description   |
+| :------------ | :------------ |
+| `git remote add origin [url]` | Specifies the remote repository for your local repository. 
+| `git remote set-url origin [url]` | Specifies the remote repository for your local repository.
+
+
 [Tutorial for ssh keys management](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
 
 
 
+### Preventing unintentional staging or committing of files
+
+Save a file with desired patterns as .gitignore with either direct string matches or wildcard globs.
+
+```
+    logs/
+    *.notes
+    pattern*/
+```
 
 
 

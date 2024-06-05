@@ -218,8 +218,8 @@ to get to those set variables, you just need to typ `echo $variable` in the term
 | HOME          | show your home directory
 | USER          | show your username
 | SHELL         | show your current shell
-| `<variable_name>=<value>` | set a new variable with the name variable_name and the value value
-| `"$<variable_name>"` | to use the value of a variable in a command, use the variable name with a `$` in front of it
+| `variable_name=value` | set a new variable with the name variable_name and the value value, don't put spaces !
+| `"$variable_name"` | to use the value of a variable in a command, use the variable name with a `$` in front of it
 | command1 $(command2)    | to use the output of command2 in command1
 
 ## File globbing (named "simple pattern" in this CheatSheet)
@@ -261,27 +261,23 @@ tmux a -t mysession | Attach to a session with the name mysession
 
 
 ## Bash scripting
-```bash
-if [condition1]
-then
-    # code if condition1 is true
-elif [condition2]
-then
-    # code if condition2 is true
-else
-    # code if condition is false
-fi
-```
+-----------------
 
-`bash script.sh arg1 arg2` to call a bash script with arguments
+To call a bash script with arguments arg1 and arg2 : `bash script.sh arg1 arg2`
 ```bash
 arg1 = $1 # get the first argument of the script
 arg2 = $2 # get the second argument of the script
+num_args = $# # get the number of arguments
 ```
 
+To use a command as a variable:
 ```bash
-for i in {1..10}
-do
+$(command)
+```
+
+To lauch a script in the background:
+```bash
+for i in {1..10} ; do
 # Modify the filename
 matlab_command="startup_server('DATA/examples/simple_geo01','simple_geo_${i}')"
 
@@ -292,6 +288,39 @@ matlab -nodisplay -r "${matlab_command}"
 
 done
 ```
+
+### Bash conditional expressions
+
+```bash
+if [condition1] ; then
+    # code if condition1 is true
+elif [condition2] ; then
+    # code if condition2 is true
+else
+    # code if condition is false
+fi
+```
+
+[condition] can be replaced either by an arithmetic expression between variables that has to be between double brackets `[[ condition ]]` (don't forget the spaces !!!)
+
+| expression    | description   |
+| :------------ | :------------ |
+| -eq           | equal
+| -ne           | not equal
+| -lt           | less than
+| -le           | less or equal
+| -gt           | greater than
+| -ge           | greater or equal
+
+
+[codition] can also be replaced by the test command `test -[option] [target]`
+
+| `-[option] [target]`  | description   |
+| :-------------------- | :------------ |
+| -f [file]             | file exists and is a regular file
+| -d [file]             | file exists and is a directory
+
+
 
 
 ## Details for commands

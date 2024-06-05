@@ -85,6 +85,8 @@ last update available on [GitHub - Regex CheatSheet.md](https://github.com/Todoc
 | {2,5}	        | 2, 3, 4 or 5
 
 
+quantifiers comes after the character or group they affect.
+
 ## Groups and Ranges
 | command       | description   |
 | :------------ | :------------ |
