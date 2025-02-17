@@ -27,6 +27,7 @@ last update available on [GitHub - Git CheatSheet.md](https://github.com/Todochr
 1. git init
 2. git add *
 3. git commit -m "first commit"
+4. git branch -M main
 4. git remote add origin git@github.com:GITHUB_USERNAME/REPO_NAME.git
 5. git push --set-upstream origin main
 
@@ -39,6 +40,7 @@ Points 4. and 5. can be raplaced by `gh rep create` and accepting the creation o
 | :------------ | :------------ |
 | git init      | turns an existing directory into a new Git repository inside the folder
 | git clone [url] | retrieves or clones a repository that already exists on GitHub, including all of the files, branches, and commits
+| git clone --recurse-submodules [url] | retrieves a repository and its submodules (if any)
 
 ## Synchronize Changes
 
@@ -53,9 +55,6 @@ Points 4. and 5. can be raplaced by `gh rep create` and accepting the creation o
 |  -------------------- | :---------------------- |
 | `git revert [commit]` | Undoes all commits after [commit], and creates a new commit (to use remotely)
 
-
-Details:
-    * [url] On GitHub, the url that points to the repo is like this `git@github.com:GITHUB_USERNAME/REPO_NAME.git`
 
 `git rebase` details:
     * It has the advantage of being able to keep a linear sequence of commits compared to [branch-destination] in order to have a more clear history of the repo.
@@ -73,6 +72,7 @@ Details:
 
 
 ## Branches and commits
+-----------------------
 
 ### Tracking
 
@@ -98,7 +98,7 @@ Details:
 | `git cherry-pick [Commit1] [Commit2] [...]` | Copies a series of commits and puts them ahead of HEAD
 
 
-## Selecting a commit
+### Selecting a commit
 
 [commit] can be replaced by a [branch-name], a [tag-name] or a commit with or without indications
 
@@ -109,12 +109,15 @@ Details:
 | HEAD^[n]      | the nth parent of the current branch on merged commits branches (where there are multiple parents)
 
 ## Stage & Snapshot
+-------------------
 
 | command        | description    |
 | :------------  | :------------  |
 | git add [file] | adds a file as it looks now to your next commit (stage)
 | git reset [file/commit] | unstages a file or a commit while retaining the changes in working directory
+| git reset [commit] | change back to the specified commit (e.g. HEAD~) without discarding file changes
 | git rm [file] | deletes the file from project and stages the removal for commit
+| `git rm -r \*.pyc` | removes all files in subfolders that match the globbing pattern, `\*` is necessary to pass `*` from the shell to git
 | git rm --cached  [file] | stages the delete of the file for commit without deleting it locally
 | git rm --ignore-unmatch [file] | avoid the error message if the file is not in the directory
 | git mv [existing path] [new path] | changes an existing file path and stages the move
@@ -123,7 +126,8 @@ Details:
 | `git restore [file]`  | Discard changes in file from the working directory
 
 
-## Tagging a version of the code
+## Tagging & Versioning
+-----------------------
 
 Tagging a commit like "a milestone" (key steps) you can refer to them like branches. If you don't specify [commit], the tag is going to be placed at your HEAD. [version] can be for instance v1 or v1.2.3
 
@@ -143,7 +147,9 @@ Tagging a commit like "a milestone" (key steps) you can refer to them like branc
 | `git tag -fa <tagname>` | Replace the tag to reference the most recent commit |
 | `git push origin --tags` | Push the tag to the remote origin |
 
+
 ## Logs and inspection of modifications
+---------------------------------------
 
 Browse and inspect the evolution of project files
 
@@ -172,6 +178,10 @@ Browse and inspect the evolution of project files
     * <numCommits> number of commits between [commit] and the most recent tag
     * <hash> identifier of [commit].
 
+## Other useful concepts
+------------------------
+
+
 ## Temporary commits
 
 Temporarily store modified, tracked files in order to change branches
@@ -183,7 +193,20 @@ Temporarily store modified, tracked files in order to change branches
 | `git stash pop` | Write working from top of stash stack |
 | `git stash drop` | Discard the changes from top of stash stack |
 
+
+## Submodules
+
+each submodule can be treated as a separate repository and all git commands are available for them
+
+| command       | description   |
+| :------------ | :------------ |
+| git submodule add [url] <destination> | Add a submodule to the repository, destination is better if it's a new folder making it the name of the submodule
+| git submodule update --remote | Update the submodules to the latest commit
+| git submodule deinit <submodule> | Remove a submodule from the repository
+| git push --recurse-submodules=check | Push and check the submodules if they were also pushed
+
 ## Setup and configure tooling
+------------------------------
 
 ### Configuring user information used across all local repositories
 
@@ -210,14 +233,18 @@ System wide ignore pattern for all local repositories
 | `git remote add origin [url]` | Specifies the remote repository for your local repository. 
 | `git remote set-url origin [url]` | Specifies the remote repository for your local repository.
 
+[url] On GitHub, the url that points to the repo is like this `git@github.com:GITHUB_USERNAME/REPO_NAME.git`
+
 
 [Tutorial for ssh keys management](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
 
 
 
-### Preventing unintentional staging or committing of files
+## Gitignore
 
-Save a file with desired patterns as .gitignore with either direct string matches or wildcard globs.
+[.gitignore](https://gitbug.com/gitignore) examples for different languages and tools. It prevents unintentional staging or committing of files
+
+Save a file with desired patterns as .gitignore with either direct string matches or wildcard globs in the main forlder of your repo.
 
 ```
     logs/
@@ -244,13 +271,6 @@ Save a file with desired patterns as .gitignore with either direct string matche
 - HEAD: representing your current working directory, the HEAD pointer can be moved to different branches, tags, or commits when using git switch
 
 ----
-
-
-
-
-
-
-
 
 
 

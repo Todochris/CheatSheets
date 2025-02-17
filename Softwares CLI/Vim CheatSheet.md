@@ -165,12 +165,14 @@ Tip Register 0 contains always the value of the last yank command.
 | y$                | yank (copy) to end of line
 | p                 | put (paste) the clipboard after cursor
 | P                 | put (paste) before cursor
+| "0p               | put (paste) the yanked text from register 0 (not the default deleted text)
 | dd                | delete (cut) a line
 | 2dd               | delete (cut) 2 lines
 | dw                | delete (cut) the characters of the word from the cursor position to the start of the next word
 | D                 | delete (cut) to the end of the line
 | d$                | delete (cut) to the end of the line
 | x                 | delete (cut) character
+| "0d               | delete (cut) the yanked text to register 0
 
 ## Exiting
 | command           | description       |
@@ -221,6 +223,15 @@ Tip Register 0 contains always the value of the last yank command.
 | Ctrl+w l          | move cursor to the right window (vertical split)
 | Ctrl+w j          | move cursor to the window below (horizontal split)
 | Ctrl+w k          | move cursor to the window above (horizontal split)
+
+
+## Usefull commands
+| command           | description       |
+| :---------------- | :---------------- |
+| :TOhtml           | convert current file to HTML with the syntax coloring and highlight
+
+
+
 
 
 

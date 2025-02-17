@@ -455,7 +455,9 @@ further functions: movmax, movmin, cummax, cummin, movprod, movsum, cumsum, cump
 | isStringScalar(str) | Check if input is string scalar
 
 
-
+### Parallel Computing
+parpool("Processes",5)
+delete(gcp)
 
 ## External modules
 

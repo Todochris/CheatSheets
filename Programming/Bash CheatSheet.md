@@ -141,8 +141,11 @@ searching uses regex (Regular expression) to find patterns in the files
 | grep [regex] files | search for regex in files 
 | grep -r [regex] dir | search recursively for regex in dir
 | `command | grep [regex]` | search in the output of command using regex
-| find ~ -name 'name' | search for all instances of name under the ~ directory (put the name of the file or globbing pattern between simple quotes)
-| locate [file]   | find all instances of file using the Linux Database (more of a system admin utility, needs to be updated with `sudo updatedb` before using it)
+| find ~ -name "globing_pattern" | search for all instances of name under the ~ directory using globing pattern
+| find . -type f -name "*.log" | find all the files with the extension .log in the current directory
+| find . -type f -name "*.log" -exec rm -f {} \; | find all the files with the extension .log in the current directory and delete them
+| sudo updatedb | update the Linux Database (used by the locate command)
+| locate [file]   | find all instances of file using the Linux Database 
 | compgen -c    | list all commands available in the terminal
 
 ## System Info
@@ -195,7 +198,7 @@ searching uses regex (Regular expression) to find patterns in the files
 | !!            | repeats the last command
 | exit          | log out of current session
 
-## Ohter commands
+## Other commands
 
 | command       | description   |
 | :------------ | :------------ |
@@ -206,7 +209,10 @@ searching uses regex (Regular expression) to find patterns in the files
 | ureradd user  | add a user
 | alias         | check all the commands aliases in the terminal (normally configured in the .bashrc file)
 | date +%Y%m%d  | print the date in the format YYYYMMDD
-
+| ip -c address | show the ip address of the server
+| ip -c route | show the routing table of the server
+| nmcli device show | show the network devices of the server
+| curl https://ipinfo.io | show the public ip address behind a router
 
 ## User environment variables
 
@@ -244,6 +250,7 @@ xdg-open . | opens the default Linux file manager
 matlab -nodisplay -r "matlab_commands" -logfile matlab_code.log
 tmux new -s mysession | Start a new session with the name mysession
 tmux a -t mysession | Attach to a session with the name mysession
+tmus ls | list all the sessions
 
 
 
