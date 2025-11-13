@@ -10,8 +10,9 @@ last update available on [GitHub - Git CheatSheet.md](https://github.com/Todochr
 
 ## installation & learning
 
-* [http://git-scm.com](http://git-scm.com)
-* [Learn git branching](https://learngitbranching.js.org/)
+* [Git project](http://git-scm.com)
+* [Install git and git-gui](git-scm.com/install/)
+* [Learn git branching in an interactive way](https://learngitbranching.js.org/)
 * [Git guide by medium](https://medium.com/@jake.page91/the-guide-to-git-i-never-had-a89048d4703a)
 * [.gitignore templates](https://github.com/github/gitignore)
 
@@ -21,6 +22,8 @@ last update available on [GitHub - Git CheatSheet.md](https://github.com/Todochr
 2. git add .
 3. git commit -m "message"
 4. git push
+
+Or, use `git gui` to do all these in a graphical user interface
 
 ## SUMMARY to create a new repo
 
