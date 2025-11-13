@@ -233,10 +233,25 @@ Tip Register 0 contains always the value of the last yank command.
 
 
 
-
-
 ## Github Copilot for Vim
 
 [Github repo](https://github.com/github/copilot.vim)
 
+Installation : `git clone --depth=1 https://github.com/github/copilot.vim.git  ~/.vim/pack/github/start/copilot.vim`
+
 If you installed it using git, you can update it by running `git pull` in the `~/.vim/pack/github/start/copilot.vim` directory.
+
+## GNUPG
+
+transparent editing of gpg encrypted files. The filename must have a .gpg, .pgp or .asc suffix.
+
+[Github repo](https://github.com/jamessan/vim-gnupg)
+
+Installation : `git clone https://github.com/jamessan/vim-gnupg.git ~/.vim/pack/gnupg/start/vim-gnupg`
+
+If you installed it using git, go in the `~/.vim/pack/gnupg/start/vim-gnupg` directory
+
+* to check for updates: `git fetch;git status`
+* to update: `git pull`
+
+

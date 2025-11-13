@@ -18,20 +18,20 @@ last update available on [GitHub - Git CheatSheet.md](https://github.com/Todochr
 ## SUMMARY to do a quick push
 
 1. git status
-2. git add *
+2. git add .
 3. git commit -m "message"
 4. git push
 
 ## SUMMARY to create a new repo
 
 1. git init
-2. git add *
+2. git add .
 3. git commit -m "first commit"
 4. git branch -M main
-4. git remote add origin git@github.com:GITHUB_USERNAME/REPO_NAME.git
-5. git push --set-upstream origin main
+5. git remote add origin git@github.com:GITHUB_USERNAME/REPO_NAME.git
+6. git push --set-upstream origin main
 
-Points 4. and 5. can be raplaced by `gh rep create` and accepting the creation of the remote "origin" using the [GitHub CLI tool "gh"](https://cli.github.com/)
+Points 5. and 6. can be raplaced by `gh repo create` by "Push an existing local repository to GitHub" and accepting the creation of the remote "origin" using the [GitHub CLI tool "gh"](https://cli.github.com/)
 
 
 ## Create Repositories
@@ -78,12 +78,14 @@ Points 4. and 5. can be raplaced by `gh rep create` and accepting the creation o
 
 | command       | description   |
 | :------------ | :------------ |
-| git branch [branch-name] | creates a new branch
+| git branch [branch-name] | creates a new branch locally
+| git push --set-upstream origin [branch-name] | create the created branch on the remote and set up tracking
 | git branch -a     | shows a list of all current branches in local and remote
 | git switch [commit] | switches to the specified branch/commit and updates the working directory
 | git checkout [commit] | switches to another branch and checks it out into your working directory
 | git checkout tags/[tag-name] | checks out the specified tag and changes the working directory
 | git branch -d [branch-name] | deletes the specified branch
+| git push origin --delete [branch-name] | deletes the specified branch from remote
 | git branch -m [branch-name] | renames the current branch name
 | git branch -f [branch-name] [commit-new] | moves a branch to another commit
 | git branch -u origin/main [branch] | sets to follow the local branch for the remote branch
@@ -114,6 +116,7 @@ Points 4. and 5. can be raplaced by `gh rep create` and accepting the creation o
 | command        | description    |
 | :------------  | :------------  |
 | git add [file] | adds a file as it looks now to your next commit (stage)
+| gid add --dry-run . | shows what will be added to the next commit without actually adding it
 | git reset [file/commit] | unstages a file or a commit while retaining the changes in working directory
 | git reset [commit] | change back to the specified commit (e.g. HEAD~) without discarding file changes
 | git rm [file] | deletes the file from project and stages the removal for commit
@@ -156,6 +159,7 @@ Browse and inspect the evolution of project files
 | Command               | Description             |
 | :-------------------- | :---------------------- |
 | `git status`          | Check changes and stage of current repo
+| `git status -u`       | List all currently untracked files, and going in each directory
 | `git log`             | Show all commits in the current branch's history. Lists version history for the current branch
 | `git log --all --decorate --oneline --graph` | Shows a tree of all the commits of the repo.
 | `git log --follow [file]` | Lists version history for a file, beyond renames (works only for a single file)
@@ -188,7 +192,7 @@ Temporarily store modified, tracked files in order to change branches
 
 | command       | description   |
 |  :------------  |  :------------  |
-| `git stash`   | Save modified and staged changes |
+| `git stash`   | Save modified and staged changes (usually before changing branches) |
 | `git stash list` | List stack-order of stashed file changes |
 | `git stash pop` | Write working from top of stash stack |
 | `git stash drop` | Discard the changes from top of stash stack |

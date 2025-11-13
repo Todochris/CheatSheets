@@ -13,6 +13,7 @@ last update available on [GitHub - todo CheatSheet.md](https://github.com/Todoch
 `arch x86_64 <command>` at the start of the command to run apps with the x86 interpreter\n
 `arch arm64 <command>` at the start of the command to run apps with the arm interpreter
 `mdfind <search_keyword>` making a spotlight research
+`nettop` to see the network activity live
 
 
 ## [top](https://ss64.com/osx/top.html)
@@ -150,6 +151,16 @@ npm ls # list all installed packages
 
 ## [Mermaid](https://github.com/mermaid-js/mermaid-cli)
 ------------
+
+Installation and update:
+```bash
+npm install -g @mermaid-js/mermaid-cli
+npm update -g @mermaid-js/mermaid-cli
+mmdc --version
+```
+
+
+
 
 ```bash
 mmdc -h # display help

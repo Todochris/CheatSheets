@@ -213,6 +213,13 @@ searching uses regex (Regular expression) to find patterns in the files
 | ip -c route | show the routing table of the server
 | nmcli device show | show the network devices of the server
 | curl https://ipinfo.io | show the public ip address behind a router
+| du -sh ./* ./.* | show the size of all files and directories in the current directory
+
+
+**advaced commands**
+
+`sudo du -xh -d 1 /directory1 /directory2 | sort -h` : sorts by size all the folders in directory1 and directory2
+
 
 ## User environment variables
 
