@@ -239,6 +239,8 @@ System wide ignore pattern for all local repositories
 | :------------ | :------------ |
 | `git remote add origin [url]` | Specifies the remote repository for your local repository. 
 | `git remote set-url origin [url]` | Specifies the remote repository for your local repository.
+| `git remote remove origin`    | Disconnect the repo from original remote (usefull when you pull a public repo that you want to work on your own
+| `git remote -v`               | Check remote configuration
 
 [url] On GitHub, the url that points to the repo is like this `git@github.com:GITHUB_USERNAME/REPO_NAME.git`
 
@@ -253,34 +255,114 @@ System wide ignore pattern for all local repositories
 
 Save a file with desired patterns as .gitignore with either direct string matches or wildcard globs in the main forlder of your repo.
 
+```.gitignore
+# ignore all . files and . folders
+.*
+# Dont ignore .gitignore (this file)
+!/.gitignore
+# Other type of files to ignore
+logs/
+*.notes
+pattern*/
 ```
-    logs/
-    *.notes
-    pattern*/
-```
-
-
 
 
 ## Glossary
 
+- General Terms
+- Repository Management
+- Branching & Merging
+- Commits & Changes
+- Remote Operations
+- Staging & Working Directory
+- History & Navigation
+- Collaboration
+- Advanced Concepts
+
+
+**General Terms
+
 - git: an open source, distributed version-control system
 - GitHub: a platform for hosting and collaborating on Git repositories
-- fetch: download changes from remote repository to local repository (but not apply them)
-- pull: refresh local repository with remote repository and applies them
-- commit: a Git object, a local snapshot/save of your entire repository compressed into a SHA
-- push: upload local repository content to a remote repository
-- branch: a lightweight movable pointer to a commit
-- clone: a local version of a repository, including all commits and branches
-- remote: a common repository on GitHub that all team members use to exchange their changes
-- fork: a copy of a repository on GitHub owned by a different user
-- pull request: a place to compare and discuss the differences introduced on a branch with reviews, comments, integrated tests, and more
-- HEAD: representing your current working directory, the HEAD pointer can be moved to different branches, tags, or commits when using git switch
 
-----
+**Repository Management**
 
+- repository (repo): A directory containing your project files and the entire Git history.
+- clone: Create a local copy of a remote repository on your machine.
+- init: Initialize a new Git repository in an existing directory.
+- fork: Create a personal copy of someone else's repository on your account.
+- origin: Default name for the remote repository you cloned from.
+- upstream: The original repository you forked from (used to sync changes).
 
+**Branching & Merging**
 
+- branch: A parallel version of your repository that diverges from the main working project.
+- main/master: The default primary branch where the source code is kept.
+- HEAD: A pointer to the current branch reference or commit you're working on.
+- checkout: Switch between different branches or restore files.
+- merge: Combine changes from different branches into one branch.
+- fast-Forward: A merge where the target branch can simply move forward to the source branch.
+- merge conflict: Occurs when Git cannot automatically resolve differences between branches.
+- rebase: Move or combine commits to a new base branch, creating a linear history.
+- cherry-pick: Apply a specific commit from one branch to another.
+
+**Commits & Changes**
+
+- commit: A snapshot of your repository at a specific point in time with a unique identifier (SHA).
+- SHA/Hash: A unique 40-character identifier for each commit (usually shortened to 7 characters).
+- commit message: Description of changes made in a commit.
+- amend: Modify the most recent commit (message or content).
+- diff: Shows differences between commits, branches, or files.
+- patch: A file containing differences that can be applied to update code.
+
+**Remote Operations**
+
+- remote: A version of your repository hosted on the internet or network.
+- push: Upload local commits to a remote repository.
+- pull: Fetch and merge/apply changes from a remote repository to your local branch.
+- fetch: Download changes from remote repository without merging/applying them.
+- pull request (PR): A request to merge your changes into another branch (GitHub/GitLab terminology).
+- merge request (MR): Same as Pull Request but used in GitLab.
+
+**Staging & Working Directory**
+
+- working directory: The directory on your computer where you're currently working on files.
+- staging area (index): A holding area for changes you want to include in your next commit.
+- stage: Add changes to the staging area before committing.
+- unstage: Remove changes from the staging area.
+- stash: Temporarily save uncommitted changes without committing them.
+- tracked Files: Files that Git is monitoring for changes.
+- untracked Files: New files that Git isn't monitoring yet.
+
+**History & Navigation**
+
+- log: View the commit history of your repository.
+- reflog: Record of all changes to HEAD, useful for recovering lost commits.
+- tag: A marker for a specific point in history (often used for releases).
+- reset: Move the current branch to a different commit, potentially discarding changes.
+- revert: Create a new commit that undoes changes from a previous commit.
+- blame: Show who last modified each line of a file and when.
+- bisect: Binary search through commit history to find when a bug was introduced.
+
+**Collaboration**
+
+- contributor: Someone who has contributed code or changes to a repository.
+- maintainer: Person responsible for managing and maintaining a repository.
+- code review: Process of examining code changes before merging.
+- conflict resolution: Process of manually fixing merge conflicts.
+- protected branch: A branch with restrictions on who can push or merge to it.
+
+**Advanced Concepts**
+
+- detached HEAD: State where HEAD points to a specific commit instead of a branch.
+- submodule: A repository embedded inside another repository.
+- subtree: Alternative to submodules for including external repositories.
+- hooks: Scripts that run automatically at certain points in the Git workflow.
+- worktree: Multiple working directories attached to the same repository.
+- bare repository: A repository without a working directory (used for sharing).
+- shallow clone: A clone with limited history to save space and time.
+- squash: Combine multiple commits into a single commit.
+- interactive rebase: Rebase with options to modify commits (edit, reorder, squash, etc.).
 
 
 
