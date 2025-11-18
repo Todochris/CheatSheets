@@ -14,32 +14,31 @@ last update available on [GitHub - CheatSheets](https://github.com/Todochris/Che
 
 ### Programming
 
-- [Bash CheatSheet.md](Programming/Bash CheatSheet.md)
-- [Matlab CheatSheet.md](Programming/Matlab CheatSheet.md)
-- [Regex CheatSheet.md](Programming/Regex CheatSheet.md)
+- [Bash CheatSheet.md](Programming/Bash%20CheatSheet.md)
+- [Matlab CheatSheet.md](Programming/Matlab%20CheatSheet.md)
+- [Regex CheatSheet.md](Programming/Regex%20CheatSheet.md)
 
 ### Softwares CLI
 
-- [7Zip CheatSheet.md](Softwares CLI/7Zip CheatSheet.md)
-- [Git CheatSheet.md](Softwares CLI/Git CheatSheet.md)
-- [LLM Cheatsheet.md](Softwares CLI/LLM Cheatsheet.md)
-- [Terminal apps CheatSheet.md](Softwares CLI/Terminal apps CheatSheet.md)
-- [Tmux CheatSheet.md](Softwares CLI/Tmux CheatSheet.md)
-- [Vim CheatSheet.md](Softwares CLI/Vim CheatSheet.md)
+- [7Zip CheatSheet.md](Softwares%20CLI/7Zip%20CheatSheet.md)
+- [Git CheatSheet.md](Softwares%20CLI/Git%20CheatSheet.md)
+- [LLM Cheatsheet.md](Softwares%20CLI/LLM%20Cheatsheet.md)
+- [Terminal apps CheatSheet.md](Softwares%20CLI/Terminal%20apps%20CheatSheet.md)
+- [Tmux CheatSheet.md](Softwares%20CLI/Tmux%20CheatSheet.md)
+- [Vim CheatSheet.md](Softwares%20CLI/Vim%20CheatSheet.md)
 
 ### Typesetting
 
-- [Latex CheatSheet.tex](Typesetting/Latex CheatSheet.tex)
-- [MarkDown CheatSheet.md](Typesetting/MarkDown CheatSheet.md)
-- [MarkDown Original CheatSheet.md](Typesetting/MarkDown Original CheatSheet.md)
-- [MarkDown Pandoc CheatSheet.md](Typesetting/MarkDown Pandoc CheatSheet.md)
-- [MarkDown gfm CheatSheet.md](Typesetting/MarkDown gfm CheatSheet.md)
+- [Latex CheatSheet.tex](Typesetting/Latex%20CheatSheet.tex)
+- [MarkDown CheatSheet.md](Typesetting/MarkDown%20CheatSheet.md)
+- [MarkDown Original CheatSheet.md](Typesetting/MarkDown%20Original%20CheatSheet.md)
+- [MarkDown Pandoc CheatSheet.md](Typesetting/MarkDown%20Pandoc%20CheatSheet.md)
+- [MarkDown gfm CheatSheet.md](Typesetting/MarkDown%20gfm%20CheatSheet.md)
 
 ### docs
 
 - [generate_readme.py](docs/generate_readme.py)
-- [template CheatSheet.md](docs/template CheatSheet.md)
-- [template.md](docs/template.md)
+- [template CheatSheet.md](docs/template%20CheatSheet.md)
 
 ## Tasks
 

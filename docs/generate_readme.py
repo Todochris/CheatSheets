@@ -10,6 +10,7 @@ Preserves all other content in the README.
 import sys
 from pathlib import Path
 from fnmatch import fnmatch
+from urllib.parse import quote
 
 # Directories to exclude from the Files section
 EXCLUDED_PATHS = [
@@ -51,10 +52,11 @@ def scan_files():
         section_title = subdir.name
         content.append(f"### {section_title}\n\n")
         
-        # Add markdown links for each file
+        # Add markdown links with URL-encoded paths
         for file in files:
-            relative_path = f"{subdir.name}/{file.name}"
-            content.append(f"- [{file.name}]({relative_path})\n")
+            # URL-encode the path (spaces become %20, special chars encoded)
+            encoded_path = f"{quote(subdir.name)}/{quote(file.name)}"
+            content.append(f"- [{file.name}]({encoded_path})\n")
         
         content.append("\n")
     
