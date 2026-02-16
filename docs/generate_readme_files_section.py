@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Execute from project root directory
-python docs/generate_reamde.py
+python docs/generate_readme.py
 
 Update only the '## Files' section in README.md with file lists from subdirectories.
 Preserves all other content in the README.
@@ -16,10 +16,11 @@ from urllib.parse import quote
 EXCLUDED_PATHS = [
     '.*',              # Excludes all hidden folders (.git, .github, .DS_Store, etc.)
     '__pycache__',
-    'node_modules',
+    '__init__.py',
     'img',
     # Add your own paths here
 ]
+
 
 def is_excluded(path_name):
     """Check if path matches any exclusion pattern"""
@@ -28,37 +29,55 @@ def is_excluded(path_name):
             return True
     return False
 
+def scan_directory_recursive(directory, root_dir, level=0):
+    """Recursively scan directory and return formatted file listings"""
+    content = []
+    
+    # Get all items in current directory, sorted
+    items = sorted(directory.iterdir(), key=lambda x: (not x.is_dir(), x.name))
+    
+    # Separate directories and files
+    subdirs = [d for d in items if d.is_dir() and not is_excluded(d.name)]
+    files = [f for f in items if f.is_file() and not is_excluded(f.name)]
+    
+    # Add files from current directory
+    if files:
+        # Calculate relative path from root
+        rel_path = directory.relative_to(root_dir)
+        section_title = str(rel_path) if str(rel_path) != '.' else 'Root'
+        
+        # Adjust heading level based on depth
+        heading = '#' * (3 + level) + f" {section_title}\n\n"
+        content.append(heading)
+        
+        for file in files:
+            # URL-encode the full relative path
+            file_rel_path = file.relative_to(root_dir)
+            encoded_path = '/'.join(quote(part) for part in file_rel_path.parts)
+            content.append(f"- [{file.name}]({encoded_path})\n")
+        
+        content.append("\n")
+    
+    # Recursively process subdirectories
+    for subdir in subdirs:
+        content.extend(scan_directory_recursive(subdir, root_dir, level + 1))
+    
+    return content
+
 def scan_files():
-    """Scan subdirectories and return formatted file listings"""
+    """Scan subdirectories recursively and return formatted file listings"""
     root_dir = Path.cwd()
     content = []
     
-    # Get all subdirectories, sorted alphabetically
+    # Get all top-level subdirectories, sorted alphabetically
     subdirs = sorted([
         d for d in root_dir.iterdir() 
         if d.is_dir() and not is_excluded(d.name)
     ])
     
     for subdir in subdirs:
-        # Get all files, excluding patterns like .DS_Store
-        files = sorted([
-            f for f in subdir.iterdir() 
-            if f.is_file() and not is_excluded(f.name)
-        ])
-        
-        if not files:
-            continue
-        
-        section_title = subdir.name
-        content.append(f"### {section_title}\n\n")
-        
-        # Add markdown links with URL-encoded paths
-        for file in files:
-            # URL-encode the path (spaces become %20, special chars encoded)
-            encoded_path = f"{quote(subdir.name)}/{quote(file.name)}"
-            content.append(f"- [{file.name}]({encoded_path})\n")
-        
-        content.append("\n")
+        # Recursively scan each top-level directory
+        content.extend(scan_directory_recursive(subdir, root_dir, level=0))
     
     return content
 
@@ -112,10 +131,11 @@ def update_readme():
     with open(readme_path, "w", encoding="utf-8") as f:
         f.writelines(new_readme)
     
-    print("✓ README.md updated successfully!")
-    print(f"  Updated '## Files' section")
+    print("✅ README.md updated successfully!")
+    print(f"  Updated '## Files' section (recursive)")
     if EXCLUDED_PATHS:
         print(f"  Excluded patterns: {', '.join(EXCLUDED_PATHS)}")
 
 if __name__ == "__main__":
     update_readme()
+

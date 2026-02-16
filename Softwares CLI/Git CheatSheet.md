@@ -54,7 +54,8 @@ Points 5. and 6. can be raplaced by `gh repo create` by "Push an existing local 
 | git rebase  | applies local commits on top of the remote tracking branch
 | git push    | uploads all local branch commits to GitHub
 | git pull    | updates your current local working branch with all new commits from the corresponding remote branch on GitHub
-| git pull --rebase   | Fetch and rebase any commits from the tracking remote branch.
+| git pull --rebase     | Fetch and rebase any commits from the tracking remote branch.
+| git pull --ff-only    | Update your current local working branch without trying to merge local commits with remote commits (safest code update)
 |  -------------------- | :---------------------- |
 | `git revert [commit]` | Undoes all commits after [commit], and creates a new commit (to use remotely)
 
@@ -207,9 +208,10 @@ each submodule can be treated as a separate repository and all git commands are 
 
 | command       | description   |
 | :------------ | :------------ |
+| ls -la .gitmodules                | file containing the submodules of a repo
 | git submodule add [url] <destination> | Add a submodule to the repository, destination is better if it's a new folder making it the name of the submodule
-| git submodule update --remote | Update the submodules to the latest commit
-| git submodule deinit <submodule> | Remove a submodule from the repository
+| git submodule update --remote     | Update the submodules to the latest commit
+| git submodule deinit <submodule>  | Remove a submodule from the repository
 | git push --recurse-submodules=check | Push and check the submodules if they were also pushed
 
 ## Setup and configure tooling
@@ -264,6 +266,12 @@ Save a file with desired patterns as .gitignore with either direct string matche
 logs/
 *.notes
 pattern*/
+```
+
+To check the files that are normally ignored but are still present in your repo from previous commits:
+
+```bash
+git ls-files -i -c --exclude-standard
 ```
 
 

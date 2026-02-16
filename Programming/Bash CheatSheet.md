@@ -37,6 +37,7 @@ last update available on [GitHub - Bash CheatSheet.md](https://github.com/Todoch
 | head file     | output the first 10 lines of file
 | tail file     | output the last 10 lines of file
 | tail -f file  | output the contents of file as it grows, starting with the last 10 lines
+| tail --lines=1000 -f "$(ls -t ./*.log 2>/dev/null | head -n1)" | to follow the last log created in the current directory
 | tree          | writes all the folder with its files in a tree structure starting from the current directory in the terminal
 | man command   | show the manual for command, to save the manual : `man command | col -b > command.txt` (sometimes the manual is available throuh `command --help` or `command -h`)
 | env           | print all the environment variables check [User environment variables](#user-environment-variables) for explanations of some variables
@@ -115,6 +116,12 @@ change file owner and group
 | `| tee f.log` | to put at the end of a command to record the outputs (stdout)
 | `|& tee f.log`| to put at the end of a command to record the stdout et stderr
 
+Monitor a process using watch and with colour codes
+
+```bash
+watch -n 1 --color "ps aux | head -1; ps aux | grep <process_name> | grep -v grep | awk '{printf \"%s %s \033[1;31m%s\033[0m \033[1;34m%s\033[0m %s %s %s %s %s\", \$1, \$2, \$3, \$4, \$5, \$6, \$7, \$8, \$9; for(i=10; i<=NF; i++) printf \" %s\", \$i; printf \"\n\"}'"
+```
+
 ### Launch background job
 
 * `at now <<!`      to launch a job
@@ -140,6 +147,8 @@ searching uses regex (Regular expression) to find patterns in the files
 | :------------ | :------------ |
 | grep [regex] files | search for regex in files 
 | grep -r [regex] dir | search recursively for regex in dir
+| grep -ri [regex] dir | search recursively for regex in dir case insensitive
+| grep -rin [regex] dir | search recursively for regex in dir case insensitive and showing line numbers
 | `command | grep [regex]` | search in the output of command using regex
 | find ~ -name "globing_pattern" | search for all instances of name under the ~ directory using globing pattern
 | find . -type f -name "*.log" | find all the files with the extension .log in the current directory
