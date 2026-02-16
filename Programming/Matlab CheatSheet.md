@@ -266,6 +266,8 @@ else
 end % control structures terminate with end
 ```
 
+`assert(condition)` can be used to throw an error if the condition is false
+    
 ### Switch Case
 ```matlab
 n = input('Enter a number: '); 
@@ -280,6 +282,7 @@ switch n
         disp('other value')
 end % control structures terminate with end
 ```
+
 ### For-Loop`
 ```matlab
 %loop a specific number of times, and keep track of each ... 
