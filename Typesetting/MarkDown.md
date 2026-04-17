@@ -1,10 +1,5 @@
----
-geometry: margin=2cm
-colorlinks: true
-linkcolor: blue
----
 
-[comment]: <> (pandoc -o 'Markdown_pandoc_render.pdf' 'Markdown.md')
+[comment]: <> (pandoc -o 'Markdown_pandoc_render.pdf' MarkDown_pandoc_header.yaml 'Markdown.md')
 
 # Markdown Cheatsheet
 
